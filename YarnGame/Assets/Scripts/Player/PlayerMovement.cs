@@ -5,102 +5,48 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Basic Movement")]
     public float moveSpeed = 7f;
+    public float jumpForce = 10f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
 
-    [Header("Dash")]
-    public float dashDistance = 5f;
-    public float dashDuration = 0.2f;
-    public float dashCoolDown = 0.75f;
-    public LineRenderer dashLineRenderer; // Reference to the LineRenderer in the scene
-    private bool canDash = true;
-    private bool isDashing = false;
+    private Rigidbody2D rb;
+    private bool isGrounded;
 
-    void Update()
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode up;
+    private float moveInput = 0;
+
+    private void Start()
     {
-        HandleInput();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    void HandleInput()
+    private void Update()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        // Check if the player is grounded
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        Vector3 movement = new Vector3(moveX, moveY);
+        // Handle player movement
+        if (Input.GetKey(right)){
 
-        if (movement.magnitude > 1f)
-        {
-            movement.Normalize();
+            moveInput = 1;
         }
-
-        movement *= moveSpeed * Time.deltaTime;
-
-        if (Input.GetButtonDown("Fire1") && !isDashing && canDash)
+        else if (Input.GetKey(left))
         {
-            StartCoroutine(Dash(movement));
+
+            moveInput = -1;
         }
+        else
+            moveInput = 0;
 
-        if (!isDashing)
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+
+
+        // Jumping
+        if (isGrounded && Input.GetKeyDown(up))
         {
-            transform.position += movement;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-    }
-
-    IEnumerator Dash(Vector3 movement)
-    {
-        canDash = false;
-        isDashing = true;
-        Vector3 dashStartPosition = transform.position;
-        Vector3 dashTargetPosition = transform.position + (movement * (dashDistance * 100));
-        Debug.DrawLine(dashStartPosition, dashTargetPosition);
-        Debug.Log(dashStartPosition + " " + dashTargetPosition);
-        float startTime = Time.time;
-
-        // Set initial positions for the line renderer
-        dashLineRenderer.SetPosition(0, dashStartPosition);
-        dashLineRenderer.SetPosition(1, dashStartPosition);
-        dashLineRenderer.enabled = true; // Make the line renderer visible
-
-        while (Time.time < startTime + dashDuration)
-        {
-            float t = (Time.time - startTime) / dashDuration;
-            transform.position = Vector3.Lerp(dashStartPosition, dashTargetPosition, t);
-
-            // Update the line renderer position
-            dashLineRenderer.SetPosition(0, dashStartPosition);
-            dashLineRenderer.SetPosition(1, transform.position);
-
-            // Damage enemies along the path
-            DamageEnemiesInPath(dashStartPosition, transform.position);
-
-            yield return null;
-        }
-
-        transform.position = dashTargetPosition;
-        isDashing = false;
-        dashLineRenderer.enabled = false; // Hide the line renderer after the dash
-
-        StartCoroutine(DashRecharge(dashCoolDown));
-    }
-
-    void DamageEnemiesInPath(Vector3 startPos, Vector3 endPos)
-    {
-        Vector3 direction = (endPos - startPos).normalized;
-        float distance = Vector3.Distance(startPos, endPos);
-
-        RaycastHit[] hits = Physics.RaycastAll(startPos, direction, distance);
-
-        /*foreach (RaycastHit hit in hits)
-        {
-            Enemy enemy = hit.collider.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damageAmount);
-            }
-        }*/
-    }
-
-    IEnumerator DashRecharge(float cooldown)
-    {
-        yield return new WaitForSeconds(cooldown);
-        canDash = true;
     }
 }

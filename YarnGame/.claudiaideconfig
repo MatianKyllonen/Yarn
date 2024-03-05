@@ -1,13 +1,13 @@
 ﻿{
-  "BackgroundImageAbsolutePath": "C:\\Users\\172164\\Pictures\\lataus.jpg",
-  "BackgroundImagesDirectoryAbsolutePath": "c:\\users\\172164\\appdata\\local\\microsoft\\visualstudio\\17.0_e332fdd0\\extensions\\1inlugrz.j2z\\Images",
+  "BackgroundImageAbsolutePath": "C:\\Users\\172164\\Pictures\\BJKVLBKVOLBK.gif",
+  "BackgroundImagesDirectoryAbsolutePath": "c:\\users\\172164\\appdata\\local\\microsoft\\visualstudio\\17.0_e332fdd0\\extensions\\3jw14pgb.bal\\Images",
   "BlurMethod": 0,
   "BlurRadius": 0,
   "ExpandToIDE": false,
   "Extensions": ".png, .jpg, .gif, .bmp",
-  "ImageBackgroundType": 0,
+  "ImageBackgroundType": 1,
   "ImageFadeAnimationInterval": "PT5S",
-  "ImageStretch": 0,
+  "ImageStretch": 3,
   "IsLimitToMainlyEditorWindow": false,
   "IsTransparentToContentMargin": false,
   "IsTransparentToStickyScroll": false,
@@ -32,5 +32,5 @@
   "WebApiDownloadInterval": "PT5M",
   "WebApiEndpoint": "",
   "WebApiJsonKey": "",
-  "WebSingleUrl": ""
+  "WebSingleUrl": "https:\/\/i.kym-cdn.com\/entries\/icons\/facebook\/000\/041\/742\/cover3.jpg"
 }
