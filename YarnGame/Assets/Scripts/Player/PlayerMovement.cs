@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    public KeyCode left;
-    public KeyCode right;
     public KeyCode up;
     private float moveInput = 0;
 
@@ -27,24 +25,11 @@ public class PlayerMovement : MonoBehaviour
         // Check if the player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        // Handle player movement
-        if (Input.GetKey(right)){
-
-            moveInput = 1;
-        }
-        else if (Input.GetKey(left))
-        {
-
-            moveInput = -1;
-        }
-        else
-            moveInput = 0;
-
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(1 * moveSpeed, rb.velocity.y);
 
 
         // Jumping
-        if (isGrounded && Input.GetKeyDown(up))
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
