@@ -24,7 +24,7 @@ public class HookPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (playerInRange && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
         {
             swinging = true;
         }
