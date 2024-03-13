@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -37,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(1 * moveSpeed, rb.velocity.y - 0.05f);
         }
+
+        if (transform.position.y < -2)
+            GameManager.instance.GameOverFadeOut();
             
 
         rb.velocity = new Vector2(1 * moveSpeed, rb.velocity.y);
