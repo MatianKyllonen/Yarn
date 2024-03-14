@@ -36,13 +36,21 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if(!dead)
+
+        player.GetComponent<PlayerMovement>().enabled = false;      
+        if (!dead)
+        {
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             StartCoroutine(ShowScore());
+        }
+
+            
     }
 
     public void GameOverFadeOut()
     {
-        StartCoroutine(FadeOut());
+        if (!dead)
+            StartCoroutine(FadeOut());
         GameOver();
     }
 
@@ -53,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             print(fadeOutImage.transform.position.y);
-            float newY = fadeOutImage.transform.position.y + 450 * Time.deltaTime;
+            float newY = fadeOutImage.transform.position.y + 1000 * Time.deltaTime;
             fadeOutImage.transform.position = new Vector3(fadeOutImage.transform.position.x, newY, fadeOutImage.transform.position.z);
         }
     }

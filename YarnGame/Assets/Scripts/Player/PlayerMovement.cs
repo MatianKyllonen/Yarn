@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
 
+    public Animator animator;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     public SpriteRenderer rope;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
+            animator.SetBool("isJumping", false);
             moveSpeed = 7;
         }
 
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
+            animator.SetBool("isJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
