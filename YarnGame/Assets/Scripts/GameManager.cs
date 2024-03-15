@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     public int score;
     private int distance;
+    private bool fading;
 
+    public GameObject deathParticle; 
     public GameObject fadeOutImage;
 
     private bool dead;
@@ -32,6 +34,12 @@ public class GameManager : MonoBehaviour
 
         if(!dead)
             distanceText.text = (distance.ToString() + "0");
+
+        if (fading)
+        {
+            float newY = fadeOutImage.transform.position.y + 2000 * Time.deltaTime;
+            fadeOutImage.transform.position = new Vector3(fadeOutImage.transform.position.x, newY, fadeOutImage.transform.position.z);
+        }
     }
 
     public void GameOver()
@@ -41,7 +49,11 @@ public class GameManager : MonoBehaviour
         if (!dead)
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            GameObject deathEffect = Instantiate(deathParticle, player.transform);
+            deathEffect.transform.position = new Vector3(deathEffect.transform.position.x, deathEffect.transform.position.y - 1);
+            player.GetComponentInChildren<SpriteRenderer>().enabled = false;
             StartCoroutine(ShowScore());
+
         }
 
             
@@ -50,21 +62,12 @@ public class GameManager : MonoBehaviour
     public void GameOverFadeOut()
     {
         if (!dead)
-            StartCoroutine(FadeOut());
-        GameOver();
+            fading = true;
+
+        player.GetComponent<PlayerMovement>().enabled = false;
+        StartCoroutine(ShowScore());
     }
 
-
-    IEnumerator FadeOut()
-    {
-        while (fadeOutImage.transform.position.y <= 450)
-        {
-            yield return new WaitForSeconds(0.05f);
-            print(fadeOutImage.transform.position.y);
-            float newY = fadeOutImage.transform.position.y + 1000 * Time.deltaTime;
-            fadeOutImage.transform.position = new Vector3(fadeOutImage.transform.position.x, newY, fadeOutImage.transform.position.z);
-        }
-    }
 
 
     IEnumerator ShowScore()

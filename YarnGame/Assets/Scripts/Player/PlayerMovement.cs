@@ -36,13 +36,15 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
             moveSpeed = 7;
         }
+        else
+            animator.SetBool("isJumping", true);
 
-        if(Input.GetKey(down))
+        if (Input.GetKey(down))
         {
             rb.velocity = new Vector2(1 * moveSpeed, rb.velocity.y - 0.05f);
         }
 
-        if (transform.position.y < -2)
+        if (transform.position.y < 0)
             GameManager.instance.GameOverFadeOut();
             
 
@@ -51,8 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Jumping
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetBool("isJumping", true);
+        {          
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }

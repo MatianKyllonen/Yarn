@@ -220,9 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68820a2cbff2247b6bb6ebf403a2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceText: {fileID: 0}
+  distanceText: {fileID: 2015354045}
   score: 0
-  fadeOutImage: {fileID: 0}
+  deathParticle: {fileID: 8465101421886826763, guid: c7d40ad09563f68498c16c8422269546, type: 3}
+  fadeOutImage: {fileID: 434257384}
 --- !u!4 &241188317
 Transform:
   m_ObjectHideFlags: 0
@@ -1532,14 +1533,14 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 96
-    m_Data: {fileID: 11400000, guid: 9d5930d482c8cf84e8c676b57720f07c, type: 2}
+    m_Data: {fileID: 11400000, guid: b4ed0300ff8e83741b1ca0760b06ca97, type: 2}
   - m_RefCount: 24
-    m_Data: {fileID: 11400000, guid: 32fa116efa908e54291cf5e5a99b163c, type: 2}
+    m_Data: {fileID: 11400000, guid: 15463c7a1e7acea409d4c32a3404b508, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 96
-    m_Data: {fileID: -1570097784, guid: 83bbb9f33a708b8498e048ffdc635777, type: 3}
+    m_Data: {fileID: 21300000, guid: 7d047bfb85332cd409139ce7cd8fd202, type: 3}
   - m_RefCount: 24
-    m_Data: {fileID: 1880980301, guid: 83bbb9f33a708b8498e048ffdc635777, type: 3}
+    m_Data: {fileID: 21300000, guid: 24531ce33011a604aa9a813e9c7f12fe, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 120
     m_Data:
@@ -1793,7 +1794,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
+  m_BackGroundColor: {r: 0.5754717, g: 0.49262777, b: 0.40934497, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5203,6 +5204,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5251322837082999628, guid: 5e72dc327f14ccb48b03c735a6615259, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1710027125}
     - target: {fileID: 7812271826192116559, guid: 5e72dc327f14ccb48b03c735a6615259, type: 3}
       propertyPath: m_Name
       value: Player

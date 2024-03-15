@@ -38,7 +38,7 @@ public class HookPoint : MonoBehaviour
         if (playerInRange && swinging)
         {
             line.positionCount = 2;
-            line.SetPosition(0, player.transform.position);
+            line.SetPosition(0, new Vector3(player.transform.position.x, player.transform.position.y + 0.65f));
             line.SetPosition(1, gameObject.transform.position);
 
             playerRb.AddForce((gameObject.transform.position - player.transform.position) * swingForce * Time.deltaTime);   
