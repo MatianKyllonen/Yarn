@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Basic Movement")]
-    public float moveSpeed = 7f;
+    public float currentMoveSpeed = 7f;
+    public float baseMoveSpeed = 7;
     public float jumpForce = 10f;
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(AddSpeed());
     }
 
     private void Update()
@@ -34,21 +36,21 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isJumping", false);
-            moveSpeed = 7;
+            currentMoveSpeed = baseMoveSpeed;
         }
         else
             animator.SetBool("isJumping", true);
 
         if (Input.GetKey(down))
         {
-            rb.velocity = new Vector2(1 * moveSpeed, rb.velocity.y - 0.05f);
+            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 0.05f);
         }
 
         if (transform.position.y < 0)
             GameManager.instance.GameOverFadeOut();
             
 
-        rb.velocity = new Vector2(1 * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
 
 
         // Jumping
@@ -56,6 +58,14 @@ public class PlayerMovement : MonoBehaviour
         {          
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+    }
+
+    IEnumerator AddSpeed()
+    {
+        yield return new WaitForSeconds(3);
+        baseMoveSpeed += 0.1f;
+        currentMoveSpeed = baseMoveSpeed;
+        StartCoroutine(AddSpeed());
     }
 
 

@@ -21,7 +21,7 @@ public class Cannon : MonoBehaviour
         {
             print("FIRE");
             playerScript = collision.GetComponent<PlayerMovement>();
-            playerScript.moveSpeed = 0;
+            playerScript.currentMoveSpeed = 0;
             collision.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(fireForce, fireForce * 20, 0));
             StartCoroutine(addForceLater());
@@ -31,6 +31,6 @@ public class Cannon : MonoBehaviour
     IEnumerator addForceLater()
     {
         yield return new WaitForSeconds(0.1f);
-        playerScript.moveSpeed = fireForce;
+        playerScript.currentMoveSpeed = fireForce;
     }
 }

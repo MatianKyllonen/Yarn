@@ -8,9 +8,19 @@ public class CameraMovement : MonoBehaviour
     public float smoothing = 0.1f; 
     public float offset = 0;
 
+    static float t = 0.0f;
+
+    private float yOffset = 2;
+
     void FixedUpdate()
     {
-        Vector3 targetPosition = new Vector3(target.position.x + offset, target.position.y + 2, transform.position.z);
+        if (target.position.y > 10)
+            yOffset = -3;
+        else
+            yOffset = 2;
+
+
+        Vector3 targetPosition = new Vector3(target.position.x + offset, target.position.y + yOffset, transform.position.z);
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
     }
