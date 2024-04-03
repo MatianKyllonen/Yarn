@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     public SpriteRenderer rope;
+    private bool groundPounding;
+    public GameObject groundPoundParticle;
 
 
     public KeyCode up;
@@ -30,21 +33,48 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Check if the player is grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.65f, groundLayer);
+
+        // Check if the raycast hits something
+        if (hit.collider != null)
+        {
+                // Player is grounded
+                isGrounded = true;
+        }
+        else
+         isGrounded= false;
+
+
+
 
         if (isGrounded)
         {
             animator.SetBool("isJumping", false);
             currentMoveSpeed = baseMoveSpeed;
+
+            if(groundPounding)
+            {
+                animator.SetBool("isGroundPounding", false);
+                groundPounding = false;
+                print("Pläts");
+                Instantiate(groundPoundParticle, groundCheck.transform.position, Quaternion.identity);
+            }
         }
         else
             animator.SetBool("isJumping", true);
 
-        if (Input.GetKey(down))
+        if (Input.GetKey(down) && !isGrounded)
         {
             rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 0.05f);
+            groundPounding = true;
+            animator.SetBool("isGroundPounding", true);
         }
+        else
+        {
+            groundPounding = false;
+            animator.SetBool("isGroundPounding", false);
+        }
+            
 
         if (transform.position.y < 0)
             GameManager.instance.GameOverFadeOut();
