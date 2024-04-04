@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 753b553daa41e6a46a40be901643ab8e
+guid: 873bc543abac283458ba483efb6abaa5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +123,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pund_0
+      name: Kolike_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620a12f1e70d71742b0a3fd7fd3f8950
+      internalID: -20588379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kolike_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b58aea4184a4854c901043278e3868e
+      internalID: 685845277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kolike_2
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +179,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c2d08495ccf3845b5fa444813e5438
-      internalID: 439841711
+      spriteID: 130cc046e5ca94b408ac1f7d3990a454
+      internalID: -1142944120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pund_1
+      name: Kolike_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05551075476f8e044a655080420977d3
+      internalID: 1726020820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kolike_4
       rect:
         serializedVersion: 2
         x: 0
@@ -158,8 +221,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 839c31552835b7c4f8f1ff80d6df067a
-      internalID: -346724972
+      spriteID: ead92889ffc44c84d98f9d6419ba4637
+      internalID: 2131827449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kolike_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264a6b2dbc48f8d4ea23dd88c6d0d944
+      internalID: -1224203813
       vertices: []
       indices: 
       edges: []
@@ -175,8 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pund_0: 439841711
-      Pund_1: -346724972
+      Kolike_0: -20588379
+      Kolike_1: 685845277
+      Kolike_2: -1142944120
+      Kolike_3: 1726020820
+      Kolike_4: 2131827449
+      Kolike_5: -1224203813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

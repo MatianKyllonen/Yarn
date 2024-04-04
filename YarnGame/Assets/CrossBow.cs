@@ -5,19 +5,31 @@ using UnityEngine;
 public class CrossBow : MonoBehaviour
 {
     public GameObject Arrow;
+    private bool fired = false;
+    public LayerMask playerMask;
 
-    IEnumerator ShootArrow()
+    private void Update()
     {
-        yield return new WaitForSeconds(1);
-        print("PEW");
-        Instantiate(Arrow, transform.position, Quaternion.identity);    
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(ShootArrow());
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 15f, playerMask);
+
+        if (hit.collider != null)
+        {
+            if(hit.collider.gameObject.tag == "Player" && !fired)
+            {
+                fired = true;
+                gameObject.GetComponentInChildren<Animator>().SetTrigger("Fire");
+            }
+            
+        }
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ShootArrow()
     {
-        if(collision.gameObject.tag == "Player") { }
-            StartCoroutine(ShootArrow());
+        Vector3 spawnPos = new Vector2(transform.position.x - 0.5f, transform.position.y);
+        Instantiate(Arrow, spawnPos, Quaternion.identity);    
     }
+
+     
+    
 }

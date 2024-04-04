@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer rope;
     private bool groundPounding;
     public GameObject groundPoundParticle;
+    private bool isSliding = false;
 
 
     public KeyCode up;
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+        //Reset values when on ground
         if (isGrounded)
         {
             animator.SetBool("isJumping", false);
@@ -63,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         else
             animator.SetBool("isJumping", true);
 
+        //Ground Pound
         if (Input.GetKey(down) && !isGrounded)
         {
             rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 50f * Time.deltaTime);
@@ -74,7 +76,24 @@ public class PlayerMovement : MonoBehaviour
             groundPounding = false;
             animator.SetBool("isGroundPounding", false);
         }
-            
+
+        //Sliding
+        if (Input.GetKeyDown(down) && isGrounded && !isSliding)
+        {
+            isSliding = true;
+            animator.SetBool("isSliding", true);
+            baseMoveSpeed += 1;
+
+        }
+
+        if(Input.GetKeyUp(down) && isSliding)
+        {
+            print("Ylös");
+            isSliding = false;
+            animator.SetBool("isSliding", false);
+            baseMoveSpeed -= 1;
+        }
+
 
         if (transform.position.y < 0)
             GameManager.instance.GameOverFadeOut();
@@ -96,6 +115,13 @@ public class PlayerMovement : MonoBehaviour
         baseMoveSpeed += 0.1f;
         currentMoveSpeed = baseMoveSpeed;
         StartCoroutine(AddSpeed());
+    }
+
+
+
+    public void EndSlide()
+    {
+
     }
 
 

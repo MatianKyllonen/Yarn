@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 753b553daa41e6a46a40be901643ab8e
+guid: 753752f8eda4907428d740a47ccd3812
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pund_0
+      name: Slide_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83255bb33cf9bd140b1f1f857115ad23
+      internalID: -233913292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3165a9db96deb04aaae2da925af16ec
+      internalID: -1011649676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 591693657c00bc64eabfa984f4c30a71
+      internalID: 2086186495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_3
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +200,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c2d08495ccf3845b5fa444813e5438
-      internalID: 439841711
+      spriteID: cf9a34c50aa9fa343a34ec370f8dc96b
+      internalID: -1193657309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pund_1
+      name: Slide_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3068020394666404e83e193afec3c1a0
+      internalID: 685757783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 624170758f8e98c459065d63551f574b
+      internalID: 971392730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_6
       rect:
         serializedVersion: 2
         x: 0
@@ -158,8 +263,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 839c31552835b7c4f8f1ff80d6df067a
-      internalID: -346724972
+      spriteID: 633c009adfc3850429a8a7842f73389a
+      internalID: -120594557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7337bd448e79c2947a20a6bb9cd0c5de
+      internalID: -1789709271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e846ddf6139d8439d21b02539deb03
+      internalID: -1199336199
       vertices: []
       indices: 
       edges: []
@@ -175,8 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pund_0: 439841711
-      Pund_1: -346724972
+      Slide_0: -233913292
+      Slide_1: -1011649676
+      Slide_2: 2086186495
+      Slide_3: -1193657309
+      Slide_4: 685757783
+      Slide_5: 971392730
+      Slide_6: -120594557
+      Slide_7: -1789709271
+      Slide_8: -1199336199
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,8 +8,6 @@ public class CameraMovement : MonoBehaviour
     public float smoothing = 0.1f; 
     public float offset = 0;
 
-    static float t = 0.0f;
-
     private float yOffset = 2;
 
     void FixedUpdate()
