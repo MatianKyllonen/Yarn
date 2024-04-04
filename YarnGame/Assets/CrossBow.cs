@@ -8,13 +8,16 @@ public class CrossBow : MonoBehaviour
 
     IEnumerator ShootArrow()
     {
-        yield return new WaitForSeconds(2);
-        Instantiate(Arrow);
-        ShootArrow();
+        yield return new WaitForSeconds(1);
+        print("PEW");
+        Instantiate(Arrow, transform.position, Quaternion.identity);    
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(ShootArrow());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ShootArrow();
+        if(collision.gameObject.tag == "Player") { }
+            StartCoroutine(ShootArrow());
     }
 }

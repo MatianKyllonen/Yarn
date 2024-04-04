@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(down) && !isGrounded)
         {
-            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 0.05f);
+            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 50f * Time.deltaTime);
             groundPounding = true;
             animator.SetBool("isGroundPounding", true);
         }
