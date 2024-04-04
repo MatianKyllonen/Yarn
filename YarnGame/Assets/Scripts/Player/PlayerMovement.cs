@@ -78,11 +78,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Sliding
-        if (Input.GetKeyDown(down) && isGrounded && !isSliding)
+        if (Input.GetKey(down) && isGrounded && !isSliding)
         {
             isSliding = true;
             animator.SetBool("isSliding", true);
-            baseMoveSpeed += 1;
+            baseMoveSpeed += 2;
 
         }
 
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             print("Ylös");
             isSliding = false;
             animator.SetBool("isSliding", false);
-            baseMoveSpeed -= 1;
+            baseMoveSpeed -= 2;
         }
 
 
