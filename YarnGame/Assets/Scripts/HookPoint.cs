@@ -26,29 +26,42 @@ public class HookPoint : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
         {
+            player.GetComponent<PlayerMovement>().swinging = true;
             swinging = true;
         }
 
         if (playerInRange && Input.GetKeyUp(KeyCode.Space))
         {
+            player.GetComponent<PlayerMovement>().swinging = false;
             swinging = false;
         }
 
-
         if (playerInRange && swinging)
         {
+            // Calculate the swing direction
+            Vector2 playerToHook = transform.position - player.transform.position;
+            float angle = Mathf.Atan2(playerToHook.y, playerToHook.x);
+
+            // Set the swing position to follow a circular trajectory
+            float swingRadius = 2.0f; // Adjust this value as needed
+            float swingX = transform.position.x + Mathf.Cos(angle) * swingRadius;
+            float swingY = transform.position.y + Mathf.Sin(angle) * swingRadius;
+
+            // Update the swing line renderer
             line.positionCount = 2;
             line.SetPosition(0, new Vector3(player.transform.position.x, player.transform.position.y + 0.65f));
-            line.SetPosition(1, gameObject.transform.position);
+            line.SetPosition(1,transform.position);
 
-            playerRb.AddForce((gameObject.transform.position - player.transform.position) * swingForce * Time.deltaTime);   
-
+            // Apply swing force
+            Vector2 swingForceDirection = new Vector2(swingY - player.transform.position.y, player.transform.position.x - swingX);
+            playerRb.AddForce(swingForceDirection.normalized * ((swingForce + playerRb.velocity.magnitude) * 100) * Time.deltaTime);
         }
         else
         {
             line.positionCount = 0;
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -62,6 +75,7 @@ public class HookPoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            player.GetComponent<PlayerMovement>().swinging = false;
             playerInRange = false;
             swinging = false;
         }

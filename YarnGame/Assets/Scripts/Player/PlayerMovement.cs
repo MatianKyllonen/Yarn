@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject groundPoundParticle;
     private bool isSliding = false;
 
+    public bool swinging;
+
 
     public KeyCode up;
     public KeyCode down;
@@ -80,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         //Sliding
         if (Input.GetKey(down) && isGrounded && !isSliding)
         {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
             isSliding = true;
             animator.SetBool("isSliding", true);
             baseMoveSpeed += 2;
@@ -88,7 +92,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyUp(down) && isSliding)
         {
-            print("Ylös");
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             isSliding = false;
             animator.SetBool("isSliding", false);
             baseMoveSpeed -= 2;
@@ -98,8 +103,12 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y < 0)
             GameManager.instance.GameOverFadeOut();
             
-
-        rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
+        if(!swinging)
+            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
 
 
         // Jumping
