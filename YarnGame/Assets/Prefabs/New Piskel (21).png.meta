@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7fa4c0c73584c6f4c8acd6196cd43d0b
+guid: 9933c56f76c1d8a47bf82cf1be0af387
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,6 +69,19 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -106,30 +119,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrossBow_0
+      name: New Piskel (21)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 17
-        height: 16
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efb826c2e6f9ef44ca23182f8db7f2b1
-      internalID: 665651116
+      spriteID: adea2ed7a1379a94d8100feda65a8f84
+      internalID: -1694293941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_1
+      name: New Piskel (21)_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 32
-        width: 17
-        height: 16
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d406dd6947e8f9b4ba65053b7bcfff3d
-      internalID: 67126941
+      spriteID: 364fe8e6237fb5f4ca289e4f69908c56
+      internalID: 1628138863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_2
+      name: New Piskel (21)_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 32
-        width: 17
-        height: 16
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a182dabfeb24a0447bdee02c2e0221de
-      internalID: 1546757805
+      spriteID: 98237216e82635a49ad32734cd9d07cf
+      internalID: -468353726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_3
+      name: New Piskel (21)_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 17
-        height: 16
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acc0a30453a86c348b936a237c826e16
-      internalID: 1667784406
+      spriteID: 3f022bb7b93fc4147abc1527cc8a1fc6
+      internalID: -1542452877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_4
+      name: New Piskel (21)_4
       rect:
         serializedVersion: 2
-        x: 17
-        y: 16
-        width: 17
-        height: 16
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec83beb06f6ac77409dd2bb6abc7ecaa
-      internalID: -1565362596
+      spriteID: 14144de2aa24d534f9124e1695af937a
+      internalID: 405690509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_5
+      name: New Piskel (21)_5
       rect:
         serializedVersion: 2
-        x: 34
-        y: 16
-        width: 17
-        height: 16
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b8692feea0a85840b0d934809001ca2
-      internalID: 409119724
+      spriteID: 01c297076361a1040b6f0c507d7ad3a0
+      internalID: 1500016977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_6
+      name: New Piskel (21)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa8fcbde4de1c7547b26969f5bb03dcd
+      internalID: -1968892544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New Piskel (21)_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4594af132bd1745866488dda722a48
+      internalID: 1208662492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New Piskel (21)_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bc1b75b42ce5f4fa9eeb25176a7b23
+      internalID: -644487020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New Piskel (21)_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
-        height: 16
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48a49e532bf62ee48b07a050758b77e0
-      internalID: -1922064316
+      spriteID: dbd5d2bc5d2b8934c9c95a66677ebc84
+      internalID: 405838518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrossBow_7
+      name: New Piskel (21)_10
       rect:
         serializedVersion: 2
-        x: 17
+        x: 64
         y: 0
-        width: 17
-        height: 16
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,29 +347,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 775a424be5ede39438497bfebbaa761b
-      internalID: 1358183963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrossBow_8
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 17
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc913af44cf731b45abeaa7aae64b1eb
-      internalID: -1962475008
+      spriteID: 0d9a72d0778851645853be90e9b663fd
+      internalID: -1674925768
       vertices: []
       indices: 
       edges: []
@@ -322,15 +364,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CrossBow_0: 665651116
-      CrossBow_1: 67126941
-      CrossBow_2: 1546757805
-      CrossBow_3: 1667784406
-      CrossBow_4: -1565362596
-      CrossBow_5: 409119724
-      CrossBow_6: -1922064316
-      CrossBow_7: 1358183963
-      CrossBow_8: -1962475008
+      New Piskel (21)_0: -1694293941
+      New Piskel (21)_1: 1628138863
+      New Piskel (21)_10: -1674925768
+      New Piskel (21)_2: -468353726
+      New Piskel (21)_3: -1542452877
+      New Piskel (21)_4: 405690509
+      New Piskel (21)_5: 1500016977
+      New Piskel (21)_6: -1968892544
+      New Piskel (21)_7: 1208662492
+      New Piskel (21)_8: -644487020
+      New Piskel (21)_9: 405838518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

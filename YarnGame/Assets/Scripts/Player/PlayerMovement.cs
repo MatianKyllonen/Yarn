@@ -18,12 +18,16 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     public SpriteRenderer rope;
     private bool groundPounding;
-    public GameObject groundPoundParticle;
     private bool isSliding = false;
 
     public bool swinging;
 
+    [Header("Particles")]
+    public GameObject groundPoundParticle;
+    public GameObject slideParticle;
+    private GameObject particle;
 
+    [Header("Binds")]
     public KeyCode up;
     public KeyCode down;
 
@@ -82,8 +86,10 @@ public class PlayerMovement : MonoBehaviour
         //Sliding
         if (Input.GetKey(down) && isGrounded && !isSliding)
         {
+            particle = Instantiate(slideParticle, transform.position, Quaternion.identity);
+            particle.transform.parent = transform;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            gameObject.GetComponent<CircleCollider2D>().enabled = true;
             isSliding = true;
             animator.SetBool("isSliding", true);
             baseMoveSpeed += 2;
@@ -92,8 +98,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyUp(down) && isSliding)
         {
+            Destroy(particle);
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             isSliding = false;
             animator.SetBool("isSliding", false);
             baseMoveSpeed -= 2;

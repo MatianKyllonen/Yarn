@@ -24,8 +24,11 @@ public class HookPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            
+
         if (playerInRange && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
         {
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = true;
             swinging = true;
         }
@@ -38,6 +41,7 @@ public class HookPoint : MonoBehaviour
 
         if (playerInRange && swinging)
         {
+
             // Calculate the swing direction
             Vector2 playerToHook = transform.position - player.transform.position;
             float angle = Mathf.Atan2(playerToHook.y, playerToHook.x);
@@ -67,14 +71,15 @@ public class HookPoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))  
         {
+            GetComponentInChildren<SpriteRenderer>().enabled = true;
             playerInRange = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
         {
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = false;
             playerInRange = false;
             swinging = false;

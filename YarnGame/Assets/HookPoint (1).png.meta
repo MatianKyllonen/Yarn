@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2014a87fe18d8e2448b41f31e4ac83a2
+guid: 133499106bfc59d4da0286d397a8e5d9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +123,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pund 1_0
+      name: HookPoint (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190f4f5aeac34d04096a0450e21cfa56
+      internalID: -493478475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7441e6eb4fd92dd44925f7ebe3d8e24c
+      internalID: -1806631563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cac59e875da1484ea3ccc3ce9361751
+      internalID: 2019275822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +200,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3856db38cbb521342ae7ce813db9e93c
-      internalID: -1302064502
+      spriteID: 8cef23934da97d14da9359b9d112c3e0
+      internalID: -1342980496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pund 1_1
+      name: HookPoint (1)_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ada7ae6548b605448851e2e4e52f6d5
+      internalID: -417831112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7590185ac0cd9c84b8e28afc01a16167
+      internalID: -1545631264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_6
       rect:
         serializedVersion: 2
         x: 0
@@ -158,8 +263,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fa9c35021070524fa94337de05c4798
-      internalID: -1861456808
+      spriteID: 3753c39907a554a4493909337b7af6fe
+      internalID: 398777108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c990d8a35b726f449e7d02059f7bf46
+      internalID: 534382105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HookPoint (1)_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21104cace08ee9647946aa226f6d294c
+      internalID: 2126795601
       vertices: []
       indices: 
       edges: []
@@ -175,8 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pund 1_0: -1302064502
-      Pund 1_1: -1861456808
+      HookPoint (1)_0: -493478475
+      HookPoint (1)_1: -1806631563
+      HookPoint (1)_2: 2019275822
+      HookPoint (1)_3: -1342980496
+      HookPoint (1)_4: -417831112
+      HookPoint (1)_5: -1545631264
+      HookPoint (1)_6: 398777108
+      HookPoint (1)_7: 534382105
+      HookPoint (1)_8: 2126795601
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
