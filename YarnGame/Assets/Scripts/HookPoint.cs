@@ -26,14 +26,14 @@ public class HookPoint : MonoBehaviour
     {
             
 
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S))
+        if (playerInRange && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S) || playerInRange && Input.GetKeyDown(KeyCode.Joystick1Button0) && Input.GetAxisRaw("Vertical") >= 0)
         {
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = true;
             swinging = true;
         }
 
-        if (playerInRange && Input.GetKeyUp(KeyCode.Space))
+        if (playerInRange && Input.GetKeyUp(KeyCode.Space) || playerInRange && Input.GetKeyUp(KeyCode.Joystick1Button0))
         {
             player.GetComponent<PlayerMovement>().swinging = false;
             swinging = false;

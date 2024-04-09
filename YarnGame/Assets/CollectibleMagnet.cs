@@ -10,7 +10,6 @@ public class CollectibleMagnet : MonoBehaviour
     {
         if (other.CompareTag("Collectible"))
         {
-            // Start moving the collectible towards the attractor
             StartCoroutine(MoveTowardsAttractor(other.transform));
         }
     }

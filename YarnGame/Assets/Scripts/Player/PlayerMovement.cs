@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", true);
 
         //Ground Pound
-        if (Input.GetKey(down) && !isGrounded)
+        if (Input.GetKey(down) && !isGrounded || Input.GetAxisRaw("Vertical") < 0 && !isGrounded)
         {
             rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 50f * Time.deltaTime);
             groundPounding = true;
@@ -85,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Sliding
-        if (Input.GetKey(down) && isGrounded && !isSliding)
+        if (Input.GetKey(down) && isGrounded && !isSliding || Input.GetAxisRaw("Vertical") < 0 && isGrounded && !isSliding)
         {
             particle = Instantiate(slideParticle, transform.position, Quaternion.identity);
             particle.transform.parent = transform;
@@ -97,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if(Input.GetKeyUp(down) && isSliding)
+        if(Input.GetKeyUp(down) && isSliding || Input.GetAxisRaw("Vertical") >= 0 && isSliding)
         {
             Destroy(particle);
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
@@ -120,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Jumping
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded && Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space))
         {          
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }

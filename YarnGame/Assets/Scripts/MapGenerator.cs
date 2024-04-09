@@ -48,7 +48,7 @@ public class MapGenerator : MonoBehaviour
     {
         CheckAreaDistance();
 
-        if (player.transform.position.x >= 150)
+        if (player.transform.position.x >= 100)
         {
             currentSpawnables = areaPrefabs2;
         }
