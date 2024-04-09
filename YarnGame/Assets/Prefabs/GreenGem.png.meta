@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0227ef8fc690b1a49a499cf1bc09749f
+guid: df1131dedd1b4bc4fb24338053ee3a50
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,19 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tileset1_0
+      name: GreenGem_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4fb1c58f370e0447bd6539e8d1781cd
-      internalID: 710845902
+      spriteID: fbe28daa113256646ba915cf3e3ed6ed
+      internalID: 1341324927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_1
+      name: GreenGem_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,35 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cde47384ef496c468fd2aa610b01363
-      internalID: -92882978
+      spriteID: f83b670cf0288e14690207cdb729edfe
+      internalID: -1203988167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72a9b4759d0f6f94999187aec76773b6
-      internalID: 1140122299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset1_3
+      name: GreenGem_2
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8f032ecacc11884d99a718d1df4f333
-      internalID: 307342902
+      spriteID: 6a203cfa7538e4846b318d05e96dd190
+      internalID: -2096416599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_4
+      name: GreenGem_3
       rect:
         serializedVersion: 2
         x: 64
@@ -221,35 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d73acfa1324b76c4ea2218b3a5214c1a
-      internalID: 1283024438
+      spriteID: 15c6d8958efeb03438df5d1d33e6dc57
+      internalID: 1392616313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 780bf51b618a44d4a9599a04073500fa
-      internalID: -583815513
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset1_6
+      name: GreenGem_4
       rect:
         serializedVersion: 2
         x: 0
@@ -263,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8194315733520d443929a4a7a9dc7152
-      internalID: 1883456118
+      spriteID: 6b3a1e5c1fbc6da4a852d14c6ee00aa8
+      internalID: 1753509011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_7
+      name: GreenGem_5
       rect:
         serializedVersion: 2
         x: 64
@@ -284,29 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b53802ab426a9874b97e2d07fa39a0f1
-      internalID: -461764549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset1_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b7f0207ce4c70d41a6c5193c0f20f20
-      internalID: 1330985701
+      spriteID: d58fbb446b6208642acb67d1f8c3791e
+      internalID: 1958626786
       vertices: []
       indices: 
       edges: []
@@ -322,15 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tileset1_0: 710845902
-      Tileset1_1: -92882978
-      Tileset1_2: 1140122299
-      Tileset1_3: 307342902
-      Tileset1_4: 1283024438
-      Tileset1_5: -583815513
-      Tileset1_6: 1883456118
-      Tileset1_7: -461764549
-      Tileset1_8: 1330985701
+      GreenGem_0: 1341324927
+      GreenGem_1: -1203988167
+      GreenGem_2: -2096416599
+      GreenGem_3: 1392616313
+      GreenGem_4: 1753509011
+      GreenGem_5: 1958626786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,11 +4,28 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+
+    private Animator currentAnimator;
+    public GameObject[] coinSprites; 
+
+    private void Start()
+    {
+        // Randomly choose a sprite variation and activate it
+        int randomIndex = Random.Range(0, coinSprites.Length);
+        for (int i = 0; i < coinSprites.Length; i++)
+        {
+            coinSprites[i].SetActive(i == randomIndex);
+            if (i == randomIndex)
+            {
+                currentAnimator = coinSprites[i].GetComponent<Animator>();
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            GetComponentInChildren<Animator>().SetTrigger("Pickup");
+            currentAnimator.SetTrigger("Pickup");
             GameManager.instance.score += 10;
             Destroy(gameObject, 0.2f);
         }

@@ -67,7 +67,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 2
 --- !u!114 &5918805543084609836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2868240346141062071
 Transform:
   m_ObjectHideFlags: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
     m_Bits: 64
   animator: {fileID: 8898626852224967265}
   rope: {fileID: 0}
+  groundPounding: 0
   swinging: 0
   groundPoundParticle: {fileID: 8465101421886826763, guid: a1508ca7d456e2041a44bb9c1fd10b68, type: 3}
   slideParticle: {fileID: 4481104456607558848, guid: b035cafcc3768ef4e9aea6a98b8e2d50, type: 3}
@@ -380,7 +381,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7812271826192116559}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

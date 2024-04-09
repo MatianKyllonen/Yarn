@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0227ef8fc690b1a49a499cf1bc09749f
+guid: 761237c1a2da1c24299626e8c37572c9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 54
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,19 +69,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tileset1_0
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4fb1c58f370e0447bd6539e8d1781cd
-      internalID: 710845902
+      spriteID: bc878aa5d7feade44b9fbc40ef1c5f3b
+      internalID: 932981592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_1
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cde47384ef496c468fd2aa610b01363
-      internalID: -92882978
+      spriteID: 9e5584b0adc006e4cb4c32d7ed5877cf
+      internalID: 384668205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_2
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72a9b4759d0f6f94999187aec76773b6
-      internalID: 1140122299
+      spriteID: 43628b0653027b8438ec249341e9e7ac
+      internalID: 1068271570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_3
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_3
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8f032ecacc11884d99a718d1df4f333
-      internalID: 307342902
+      spriteID: 3af2018c2f2d8bd4b9ed9e5b5013320f
+      internalID: 791402919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_4
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_4
       rect:
         serializedVersion: 2
         x: 64
@@ -221,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d73acfa1324b76c4ea2218b3a5214c1a
-      internalID: 1283024438
+      spriteID: 00364773fe4594a45b7130fac42ecdc3
+      internalID: -2146096558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_5
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_5
       rect:
         serializedVersion: 2
         x: 128
@@ -242,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 780bf51b618a44d4a9599a04073500fa
-      internalID: -583815513
+      spriteID: 5a41e5215a8730a4d9a911b4f7115d7a
+      internalID: -2113445334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_6
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_6
       rect:
         serializedVersion: 2
         x: 0
@@ -263,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8194315733520d443929a4a7a9dc7152
-      internalID: 1883456118
+      spriteID: 65d89ccc12ab930458a73b74244c8cae
+      internalID: -230783812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset1_7
+      name: Kxe_with_hot_balls_in_hiw_mouth_-w-_7
       rect:
         serializedVersion: 2
         x: 64
@@ -284,29 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b53802ab426a9874b97e2d07fa39a0f1
-      internalID: -461764549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset1_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b7f0207ce4c70d41a6c5193c0f20f20
-      internalID: 1330985701
+      spriteID: ccd373c1ed29f944da395d7b52004648
+      internalID: -1021386642
       vertices: []
       indices: 
       edges: []
@@ -322,15 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tileset1_0: 710845902
-      Tileset1_1: -92882978
-      Tileset1_2: 1140122299
-      Tileset1_3: 307342902
-      Tileset1_4: 1283024438
-      Tileset1_5: -583815513
-      Tileset1_6: 1883456118
-      Tileset1_7: -461764549
-      Tileset1_8: 1330985701
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_0: 932981592
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_1: 384668205
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_2: 1068271570
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_3: 791402919
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_4: -2146096558
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_5: -2113445334
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_6: -230783812
+      Kxe_with_hot_balls_in_hiw_mouth_-w-_7: -1021386642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

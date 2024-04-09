@@ -11,16 +11,15 @@ public class BatEnemy : MonoBehaviour
 
     void Start()
     {
-        // Save the initial position of the enemy
         startPosition = transform.position.y;
     }
 
     void Update()
     {
-        // Calculate the horizontal movement using Mathf.PingPong
+        // This calculates the new position it's gonna go to
         float newPositionY = startPosition + Mathf.PingPong(Time.time * moveSpeed, moveDistance) - (moveDistance / 2.0f);
 
-        // Update the position of the game object
+        // This moves towards it on the Y Axis
         transform.position = new Vector3(transform.position.x, newPositionY, transform.position.z);
     }
 
