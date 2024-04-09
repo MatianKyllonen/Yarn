@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2645340182248510512}
   - component: {fileID: 6284412214048043802}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: ChestCoin
   m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051114944217051189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!1 &3090806621119255796
 GameObject:
   m_ObjectHideFlags: 0

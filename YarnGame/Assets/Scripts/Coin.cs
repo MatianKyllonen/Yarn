@@ -8,8 +8,9 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameManager.instance.score += 50;
-            Destroy(gameObject);
+            GetComponentInChildren<Animator>().SetTrigger("Pickup");
+            GameManager.instance.score += 10;
+            Destroy(gameObject, 0.2f);
         }
     }
 }

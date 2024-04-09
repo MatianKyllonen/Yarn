@@ -17,10 +17,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     public SpriteRenderer rope;
-    private bool groundPounding;
+    [HideInInspector] public bool groundPounding;
     private bool isSliding = false;
 
-    public bool swinging;
+    [HideInInspector]  public bool swinging;
+    
 
     [Header("Particles")]
     public GameObject groundPoundParticle;
