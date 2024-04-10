@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     public Animator animator;
+    public bool inMenu;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -37,7 +38,9 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(AddSpeed());
+
+        if(!inMenu) 
+            StartCoroutine(AddSpeed());
     }
 
     private void Update()
@@ -65,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("isGroundPounding", false);
                 groundPounding = false;
-                print("Pläts");
                 Instantiate(groundPoundParticle, groundCheck.transform.position, Quaternion.identity);
             }
         }
@@ -109,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (transform.position.y < 0)
+        if (transform.position.y < 0 && !inMenu)
             GameManager.instance.GameOverFadeOut();
             
         if(!swinging)
@@ -134,14 +136,5 @@ public class PlayerMovement : MonoBehaviour
         currentMoveSpeed = baseMoveSpeed;
         StartCoroutine(AddSpeed());
     }
-
-
-
-    public void EndSlide()
-    {
-
-    }
-
-
 
 }

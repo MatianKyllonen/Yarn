@@ -10,13 +10,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI distanceText;
     private GameObject player;
     public int score;
+    public int coins;
     private int distance;
     private bool fading;
 
     public GameObject deathParticle; 
     public GameObject fadeOutImage;
+    public TextMeshProUGUI coinsText;
 
-    private bool dead;
+    public bool dead;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +34,12 @@ public class GameManager : MonoBehaviour
     {
         distance = Mathf.RoundToInt(player.transform.position.x);
 
-        if(!dead)
+        if (!dead)
+        {
             distanceText.text = (distance.ToString() + "0");
+            coinsText.text = (coins.ToString() + "0");
+        }
+            
 
         if (fading)
         {
@@ -45,7 +51,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
 
-        player.GetComponent<PlayerMovement>().enabled = false;      
+        player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<Rigidbody2D>().isKinematic = true;
+
         if (!dead)
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -78,4 +86,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject.Find("Fade").GetComponent<Nyooooom>().Bust();
+    }
+    
 }

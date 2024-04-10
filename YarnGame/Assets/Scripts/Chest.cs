@@ -41,7 +41,7 @@ public class Chest : MonoBehaviour
             Vector2 randomDirection = Quaternion.Euler(0, 0, angle) * Vector2.up;
             coin.GetComponent<Rigidbody2D>().velocity = randomDirection * coinSpeed;
             // Activate the coin's collider after a delay
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.075f);
 
             coin.GetComponent<CircleCollider2D>().enabled = true;
 

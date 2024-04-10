@@ -26,7 +26,7 @@ public class HookPoint : MonoBehaviour
     {
             
 
-        if (playerInRange && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S) || playerInRange && Input.GetKeyDown(KeyCode.Joystick1Button0) && Input.GetAxisRaw("Vertical") >= 0)
+        if (playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S) || playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Joystick1Button0) && Input.GetAxisRaw("Vertical") >= 0)
         {
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = true;

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public GameObject background;
     public Transform target; 
     public float smoothing = 0.1f; 
     public float offset = 0;
@@ -30,6 +31,9 @@ public class CameraMovement : MonoBehaviour
             Vector3 targetPosition = new Vector3(target.position.x + offset, target.position.y + yOffset, transform.position.z);
 
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
+
+            Vector3 bgPosition = new Vector3(target.position.x - 6, background.transform.position.y);
+            background.transform.position = Vector3.Lerp(background.transform.position, bgPosition, smoothing * Time.deltaTime);
         }
 
     }

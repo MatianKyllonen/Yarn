@@ -6,7 +6,8 @@ public class Coin : MonoBehaviour
 {
 
     private Animator currentAnimator;
-    public GameObject[] coinSprites; 
+    public GameObject[] coinSprites;
+    private bool collected;
 
     private void Start()
     {
@@ -25,9 +26,14 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            currentAnimator.SetTrigger("Pickup");
-            GameManager.instance.score += 10;
+            currentAnimator.SetTrigger("Pickup");     
+            if (!collected)
+                GameManager.instance.coins += 1;
+
+            collected = true;
             Destroy(gameObject, 0.2f);
         }
     }
+
+
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df1131dedd1b4bc4fb24338053ee3a50
+guid: 2ae7af340320d8d4383e08cff7476fe9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -110,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenGem_0
+      name: Kolike (2)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbe28daa113256646ba915cf3e3ed6ed
-      internalID: 1341324927
+      spriteID: 4b4d2170a6a069d45bb4e3b188291a2f
+      internalID: -1298776209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenGem_1
+      name: Kolike (2)_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f83b670cf0288e14690207cdb729edfe
-      internalID: -1203988167
+      spriteID: 8c2506dd1282d0b43ab0266ed7653647
+      internalID: 823819555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenGem_2
+      name: Kolike (2)_2
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a203cfa7538e4846b318d05e96dd190
-      internalID: -2096416599
+      spriteID: d4c7e1afec8c7e241aa95522a546fd13
+      internalID: -731545912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenGem_3
+      name: Kolike (2)_3
       rect:
         serializedVersion: 2
         x: 64
@@ -187,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c6d8958efeb03438df5d1d33e6dc57
-      internalID: 1392616313
+      spriteID: b8631c7d728f7714f912ea5037dfaad3
+      internalID: 2023269080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenGem_4
+      name: Kolike (2)_4
       rect:
         serializedVersion: 2
         x: 0
@@ -208,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b3a1e5c1fbc6da4a852d14c6ee00aa8
-      internalID: 1753509011
+      spriteID: 645c5da854a6bc641aafa1d4268206b0
+      internalID: -2100959756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenGem_5
+      name: Kolike (2)_5
       rect:
         serializedVersion: 2
         x: 64
@@ -229,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d58fbb446b6208642acb67d1f8c3791e
-      internalID: 1958626786
+      spriteID: f17380e6a2ff0fc41be3eca03f5dd4db
+      internalID: -1985280201
       vertices: []
       indices: 
       edges: []
@@ -246,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GreenGem_0: 1341324927
-      GreenGem_1: -1203988167
-      GreenGem_2: -2096416599
-      GreenGem_3: 1392616313
-      GreenGem_4: 1753509011
-      GreenGem_5: 1958626786
+      Kolike (2)_0: -1298776209
+      Kolike (2)_1: 823819555
+      Kolike (2)_2: -731545912
+      Kolike (2)_3: 2023269080
+      Kolike (2)_4: -2100959756
+      Kolike (2)_5: -1985280201
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
