@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour
     public GameObject deathParticle; 
     public GameObject fadeOutImage;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI timerText;
 
     public bool dead;
+    private float t;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +38,10 @@ public class GameManager : MonoBehaviour
 
         if (!dead)
         {
+            t += 1f * Time.deltaTime;
             distanceText.text = (distance.ToString() + "0");
             coinsText.text = (coins.ToString() + "0");
+            timerText.text = (t.ToString("F2"));
         }
             
 

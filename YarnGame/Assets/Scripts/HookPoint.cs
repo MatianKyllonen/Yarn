@@ -26,7 +26,7 @@ public class HookPoint : MonoBehaviour
     {
             
 
-        if (playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.S) || playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Joystick1Button0) && Input.GetAxisRaw("Vertical") >= 0)
+        if (playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Space) || playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = true;
@@ -35,6 +35,7 @@ public class HookPoint : MonoBehaviour
 
         if (playerInRange && Input.GetKeyUp(KeyCode.Space) || playerInRange && Input.GetKeyUp(KeyCode.Joystick1Button0))
         {
+            print("let go");
             player.GetComponent<PlayerMovement>().swinging = false;
             swinging = false;
         }
@@ -78,7 +79,9 @@ public class HookPoint : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if(collision.gameObject.CompareTag("Player"))
         {
+            print("Out of range");
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = false;
             playerInRange = false;

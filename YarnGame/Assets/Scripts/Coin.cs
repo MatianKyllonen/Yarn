@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
         // Randomly choose a sprite variation and activate it
         int randomIndex = Random.Range(0, coinSprites.Length);
         for (int i = 0; i < coinSprites.Length; i++)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9040782805320089420}
   - component: {fileID: 2645340182248510512}
   - component: {fileID: 6284412214048043802}
+  - component: {fileID: 2832204296502159463}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Collectible
@@ -52,9 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSprites:
   - {fileID: 3090806621119255796}
-  - {fileID: 2513584556937786943}
   - {fileID: 7728510067350132061}
-  - {fileID: 9191815923462926053}
 --- !u!58 &2645340182248510512
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,6 +116,58 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!212 &2832204296502159463
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051114944217051189}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1370457528, guid: ca164e351e51c084bb75d5ae7f1fb85b, type: 3}
+  m_Color: {r: 1, g: 0.80755764, b: 0.1745283, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2513584556937786943
 GameObject:
   m_ObjectHideFlags: 0
