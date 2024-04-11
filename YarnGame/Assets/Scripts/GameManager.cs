@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -136,8 +137,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         gameOverScreen.SetActive(true);
         killerText.text = killer;      
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private Sprite GetKillerSprite(string killerName)
