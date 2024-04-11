@@ -56,7 +56,7 @@ public class DergEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameManager.instance.GameOver();
+            GameManager.instance.GameOver("Dragon");
         }
     }
 }

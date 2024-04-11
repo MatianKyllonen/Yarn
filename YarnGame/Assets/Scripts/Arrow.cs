@@ -23,7 +23,7 @@ public class Arrow : MonoBehaviour
             print(collision.name);
             if (collision.gameObject.tag == "Player")
             {
-                GameManager.instance.GameOver();
+                GameManager.instance.GameOver("Arrow");
             }
         }
     }

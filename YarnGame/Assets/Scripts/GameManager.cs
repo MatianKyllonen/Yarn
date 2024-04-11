@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,23 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     public bool dead;
-    private float t;
+
+    private float s;
+    private int m;
+
+    public EnemyDatabase enemyDatabase;
+    [SerializeField] public Image killerImage;
+
+    [Header("Game Over Section")]
+    public GameObject gameOverScreen;
+    public TextMeshProUGUI killerText;
+
+    public TextMeshProUGUI gocoinsText;
+    public TextMeshProUGUI gotimerText;
+    public TextMeshProUGUI goDistanceText;
+    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +55,27 @@ public class GameManager : MonoBehaviour
 
         if (!dead)
         {
-            t += 1f * Time.deltaTime;
-            distanceText.text = (distance.ToString() + "0");
+            s += 1f * Time.deltaTime;
+
+            if(s >= 60)
+            {
+                m += 1;
+                s = 0;
+            }
+                   
+
+            if(m != 0)
+                timerText.text = (m.ToString() + ":" +  s.ToString("F2"));
+            else
+                timerText.text = (s.ToString("F2"));
+
+            if (Input.GetKeyDown(KeyCode.V))
+                s += 10;
+
+
+            distanceText.text = (distance.ToString() + "0" + " M");
             coinsText.text = (coins.ToString() + "0");
-            timerText.text = (t.ToString("F2"));
+            
         }
             
 
@@ -52,7 +86,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void GameOver(string killer)
     {
 
         player.GetComponent<PlayerMovement>().enabled = false;
@@ -60,11 +94,12 @@ public class GameManager : MonoBehaviour
 
         if (!dead)
         {
+            
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             GameObject deathEffect = Instantiate(deathParticle, player.transform);
             deathEffect.transform.position = new Vector3(deathEffect.transform.position.x, deathEffect.transform.position.y - 1);
             player.GetComponentInChildren<SpriteRenderer>().enabled = false;
-            StartCoroutine(ShowScore());
+            StartCoroutine(ShowScore(killer));
 
         }
 
@@ -77,19 +112,48 @@ public class GameManager : MonoBehaviour
             fading = true;
 
         player.GetComponent<PlayerMovement>().enabled = false;
-        StartCoroutine(ShowScore());
+        StartCoroutine(ShowScore("Void"));
     }
 
 
 
-    IEnumerator ShowScore()
+    IEnumerator ShowScore(string killer)
     {
         dead = true;
-        score += distance;
-        distanceText.text = score.ToString() + "0";
+
+        goDistanceText.text = distanceText.text;
+        gocoinsText.text = coinsText.text;
+        gotimerText.text = timerText.text;
+
+        Sprite killerSprite = GetKillerSprite(killer);
+        if (killerSprite != null)
+        {
+            // Set the sprite image
+            // Assuming you have a UI Image component for displaying the sprite
+            killerImage.sprite = killerSprite;
+        }
+
+        yield return new WaitForSeconds(1);
+        gameOverScreen.SetActive(true);
+        killerText.text = killer;      
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    private Sprite GetKillerSprite(string killerName)
+    {
+        foreach (var enemyInfo in enemyDatabase.enemyInfoList)
+        {
+            if (enemyInfo.enemyType.ToString() == killerName)
+            {
+                return enemyInfo.picture;
+            }
+        }
+        // If no match found, return a default sprite or handle it as needed
+        return null;
+    }
+
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

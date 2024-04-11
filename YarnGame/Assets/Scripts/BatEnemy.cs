@@ -27,7 +27,7 @@ public class BatEnemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            GameManager.instance.GameOver();
+            GameManager.instance.GameOver("Bat");
         }
     }
 }

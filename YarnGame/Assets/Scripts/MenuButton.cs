@@ -46,9 +46,10 @@ public class MenuButton : MonoBehaviour
                         fade.GetComponent<Rigidbody2D>().AddForce(Vector3.left * 3000);
                     }
                     else if (action.type == ButtonType.Quit)
-                    { 
-                 
-                        QuitGame();
+                    {
+
+                        StartCoroutine(QuitGame());
+                        fade.GetComponent<Rigidbody2D>().AddForce(Vector3.left * 3000);
                     }
                     // Add additional else if statements for other button types here
                 }
@@ -69,9 +70,10 @@ public class MenuButton : MonoBehaviour
 
 
 
-    void QuitGame()
+    private IEnumerator QuitGame()
     {
         Debug.Log("Quitting the game...");
-        // Add your code to quit the game here
+        yield return new WaitForSeconds(1);
+        Application.Quit();
     }
 }
