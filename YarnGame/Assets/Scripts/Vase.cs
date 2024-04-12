@@ -20,6 +20,8 @@ public class Vase : MonoBehaviour
                 currentAnimator = vaseSprites[i].GetComponent<Animator>();
             }
         }
+
+        Destroy(gameObject, 10);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

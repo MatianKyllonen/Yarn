@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEditor;
+using System.Collections;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -7,10 +8,12 @@ public class MapGenerator : MonoBehaviour
 
     //Area Prefabs
     private List<GameObject> currentSpawnables;
+
     public List<GameObject> areaPrefabs1;
     public List<GameObject> areaPrefabs2;
+    public List<GameObject> areaPrefabs3;
 
-
+    public GameObject transitionArea;
 
     public float areaWidth = 10f; // Width of each area
     public float distanceBetweenAreas = 20f; // Distance between consecutive areas
@@ -18,6 +21,11 @@ public class MapGenerator : MonoBehaviour
     private List<GameObject> activeAreas = new List<GameObject>();
     private Transform player;
     private float lastAreaX;
+
+    private bool transition1Triggered = false;
+    private bool transition2Triggered = false;
+
+    public GameObject zone3bg;
 
     void Start()
     {
@@ -48,10 +56,34 @@ public class MapGenerator : MonoBehaviour
     {
         CheckAreaDistance();
 
-        if (player.transform.position.x >= 100)
+        if (player.transform.position.x >= 100 && !transition1Triggered)
         {
-            currentSpawnables = areaPrefabs2;
+            Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
+            GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
+            lastAreaX = newArea.transform.position.x;
+            currentSpawnables = areaPrefabs2; 
+            transition1Triggered = true; 
         }
+
+        if (player.transform.position.x >= 200 && !transition2Triggered)
+        {
+            Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
+            GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
+            lastAreaX = newArea.transform.position.x;
+            currentSpawnables = areaPrefabs3;
+            transition2Triggered = true;
+            StartCoroutine(ChangeBg(zone3bg, 0.5f, 250));
+        }
+    }
+
+    private IEnumerator ChangeBg(GameObject bg, float delay, float treshhold)
+    {
+        while (player.transform.position.x < treshhold)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(delay);
+        bg.SetActive(true);
     }
 
     void CheckAreaDistance()

@@ -4680,8 +4680,8 @@ Transform:
   m_GameObject: {fileID: 681962605}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.75, y: -0.75, z: 0}
-  m_LocalScale: {x: 24, y: 5, z: 1}
+  m_LocalPosition: {x: 15.75, y: -9, z: 0}
+  m_LocalScale: {x: 24, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1547447979}
@@ -5105,8 +5105,15 @@ MonoBehaviour:
   - {fileID: 8436353874801190703, guid: 211e66f155bc54f4795ff951e8ef8753, type: 3}
   - {fileID: 8436353874801190703, guid: 8f64533a10bbde945b9f9385996070f5, type: 3}
   - {fileID: 8436353874801190703, guid: 339038e737ac1f942af00f6dc600dbe2, type: 3}
+  areaPrefabs3:
+  - {fileID: 8436353874801190703, guid: 3ba758cfaa1befa4390f2936601fc03c, type: 3}
+  - {fileID: 8436353874801190703, guid: c14671d2eda2fa547bab74e40e466351, type: 3}
+  - {fileID: 8436353874801190703, guid: 70dc9186d2ebafe46891f9f9fa4adf30, type: 3}
+  - {fileID: 8436353874801190703, guid: 8dde4dbf1c360b94aa9120d0db1dd93c, type: 3}
+  transitionArea: {fileID: 8436353874801190703, guid: 505c75719476a7d40bcb0991426c9da8, type: 3}
   areaWidth: 20
   distanceBetweenAreas: 20
+  zone3bg: {fileID: 1987344210}
 --- !u!4 &786100151
 Transform:
   m_ObjectHideFlags: 0
@@ -6690,6 +6697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1987344211}
   - {fileID: 1999188551}
   - {fileID: 1547447979}
   - {fileID: 1890688689}
@@ -8319,6 +8327,90 @@ SpriteRenderer:
   m_SortingOrder: -5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.49056602, g: 0.46938014, b: 0.3952296, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1987344210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987344211}
+  - component: {fileID: 1987344212}
+  m_Layer: 0
+  m_Name: Zone3BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1987344211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987344210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.75, y: 3, z: 0}
+  m_LocalScale: {x: 25, y: 70, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1263709486}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1987344212
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987344210}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.16767532, g: 0.43138012, b: 0.5660378, a: 0.50980395}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -63,12 +63,17 @@ public class GameManager : MonoBehaviour
                 m += 1;
                 s = 0;
             }
-                   
 
-            if(m != 0)
-                timerText.text = (m.ToString() + ":" +  s.ToString("F2"));
+
+
+            if (m != 0)
+                if (s < 10)
+                    timerText.text = (m.ToString() + ":" + "0" + s.ToString("F2"));
+                else
+                    timerText.text = (m.ToString() + ":" + s.ToString("F2"));
             else
-                timerText.text = (s.ToString("F2"));
+                    timerText.text = (s.ToString("F2"));
+
 
             if (Input.GetKeyDown(KeyCode.V))
                 s += 10;

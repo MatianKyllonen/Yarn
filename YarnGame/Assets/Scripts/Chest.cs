@@ -13,6 +13,8 @@ public class Chest : MonoBehaviour
 
     private void Start()
     {
+        Destroy(gameObject, 10);
+
         sr = GetComponentInChildren<SpriteRenderer>();
     }
 
