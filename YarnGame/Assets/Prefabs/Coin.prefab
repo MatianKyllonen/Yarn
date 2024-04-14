@@ -54,6 +54,7 @@ MonoBehaviour:
   coinSprites:
   - {fileID: 3090806621119255796}
   - {fileID: 7728510067350132061}
+  pickupSound: {fileID: 8300000, guid: 9e0a362b1314fa64d994d68dd9e16805, type: 3}
 --- !u!58 &2645340182248510512
 CircleCollider2D:
   m_ObjectHideFlags: 0

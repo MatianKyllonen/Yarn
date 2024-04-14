@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 13
+  killer: Arrow
 --- !u!61 &1433025648341870008
 BoxCollider2D:
   m_ObjectHideFlags: 0

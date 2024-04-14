@@ -9,6 +9,8 @@ public class Coin : MonoBehaviour
     public GameObject[] coinSprites;
     private bool collected;
 
+    public AudioClip pickupSound;
+
     private void Start()
     {
         GetComponent<SpriteRenderer>().enabled = false;
@@ -27,9 +29,13 @@ public class Coin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            currentAnimator.SetTrigger("Pickup");     
+            currentAnimator.SetTrigger("Pickup");
             if (!collected)
+            {
+                collision.GetComponent<AudioSource>().PlayOneShot(pickupSound);
                 GameManager.instance.coins += 1;
+            }
+
 
             collected = true;
             Destroy(gameObject, 0.2f);

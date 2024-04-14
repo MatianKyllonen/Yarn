@@ -6,6 +6,8 @@ public class Arrow : MonoBehaviour
 {
     public float speed = 15f; // Set the speed of the arrow
 
+    public string killer;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +25,7 @@ public class Arrow : MonoBehaviour
             print(collision.name);
             if (collision.gameObject.tag == "Player")
             {
-                GameManager.instance.GameOver("Arrow");
+                GameManager.instance.GameOver(killer);
             }
         }
     }

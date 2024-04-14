@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 3307771813196767523}
   - {fileID: 3763419780245695564}
   - {fileID: 852807274151341046}
+  pickupSound: {fileID: 8300000, guid: 9e0a362b1314fa64d994d68dd9e16805, type: 3}
 --- !u!58 &2645340182248510512
 CircleCollider2D:
   m_ObjectHideFlags: 0
