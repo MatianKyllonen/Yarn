@@ -21,7 +21,8 @@ public class Vase : MonoBehaviour
             }
         }
 
-        Destroy(gameObject, 10);
+        if(GameManager.instance != null)
+            Destroy(gameObject, 10);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

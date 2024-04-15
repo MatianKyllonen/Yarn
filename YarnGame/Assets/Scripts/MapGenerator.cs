@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -25,7 +26,11 @@ public class MapGenerator : MonoBehaviour
     private bool transition1Triggered = false;
     private bool transition2Triggered = false;
 
+    public TextMeshProUGUI zoneText;
     public GameObject zone3bg;
+
+    private int zoneNum = 1;
+
 
     void Start()
     {
@@ -62,17 +67,21 @@ public class MapGenerator : MonoBehaviour
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs2; 
-            transition1Triggered = true; 
+            transition1Triggered = true;
+
+            StartCoroutine(ChangeBg(null, 0.45f, 150));
+
         }
 
-        if (player.transform.position.x >= 450 && !transition2Triggered)
+        if (player.transform.position.x >= 350 && !transition2Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs3;
             transition2Triggered = true;
-            StartCoroutine(ChangeBg(zone3bg, 0.15f, 500));
+            StartCoroutine(ChangeBg(zone3bg, 0.15f, 400));
+
         }
     }
 
@@ -83,7 +92,13 @@ public class MapGenerator : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(delay);
-        bg.SetActive(true);
+
+        if (bg != null)
+            bg.SetActive(true);
+
+        zoneText.text = ("Zone " + zoneNum);
+        zoneNum++;
+        zoneText.GetComponent<Animator>().SetTrigger("Mogged");
     }
 
     void CheckAreaDistance()

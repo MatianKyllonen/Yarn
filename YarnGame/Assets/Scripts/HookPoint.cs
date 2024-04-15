@@ -25,17 +25,27 @@ public class HookPoint : MonoBehaviour
     void Update()
     {
             
+        if(GameManager.instance != null)
+            if (playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Space) || playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                player.GetComponent<PlayerMovement>().swinging = true;
+                swinging = true;
+            }
 
-        if (playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Space) || playerInRange && GameManager.instance.dead == false && Input.GetKeyDown(KeyCode.Joystick1Button0))
+        if(GameManager.instance == null)
         {
-            GetComponentInChildren<SpriteRenderer>().enabled = false;
-            player.GetComponent<PlayerMovement>().swinging = true;
-            swinging = true;
+
+            if (playerInRange && Input.GetKeyDown(KeyCode.Space) || playerInRange && Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                player.GetComponent<PlayerMovement>().swinging = true;
+                swinging = true;
+            }
         }
 
         if (playerInRange && Input.GetKeyUp(KeyCode.Space) || playerInRange && Input.GetKeyUp(KeyCode.Joystick1Button0))
         {
-            print("let go");
             player.GetComponent<PlayerMovement>().swinging = false;
             swinging = false;
         }
@@ -48,7 +58,7 @@ public class HookPoint : MonoBehaviour
             float angle = Mathf.Atan2(playerToHook.y, playerToHook.x);
 
             // Set the swing position to follow a circular trajectory
-            float swingRadius = 2.0f; // Adjust this value as needed
+            float swingRadius = 1f; // Adjust this value as needed
             float swingX = transform.position.x + Mathf.Cos(angle) * swingRadius;
             float swingY = transform.position.y + Mathf.Sin(angle) * swingRadius;
 
@@ -59,7 +69,7 @@ public class HookPoint : MonoBehaviour
 
             // Apply swing force
             Vector2 swingForceDirection = new Vector2(swingY - player.transform.position.y, player.transform.position.x - swingX);
-            playerRb.AddForce(swingForceDirection.normalized * ((swingForce + playerRb.velocity.magnitude) * 100) * Time.deltaTime);
+            playerRb.AddForce(swingForceDirection.normalized * ((swingForce + playerRb.velocity.magnitude) * 100 + playerRb.gameObject.GetComponent<PlayerMovement>().currentMoveSpeed) * Time.deltaTime);
         }
         else
         {
@@ -81,7 +91,6 @@ public class HookPoint : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            print("Out of range");
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerMovement>().swinging = false;
             playerInRange = false;

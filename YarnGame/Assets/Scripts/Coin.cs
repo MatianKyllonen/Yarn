@@ -33,7 +33,7 @@ public class Coin : MonoBehaviour
             if (!collected)
             {
                 collision.GetComponent<AudioSource>().PlayOneShot(pickupSound);
-                GameManager.instance.coins += 1;
+                GameManager.instance.coins += currentAnimator.gameObject.GetComponent<CoinValue>().coinValue;
             }
 
 

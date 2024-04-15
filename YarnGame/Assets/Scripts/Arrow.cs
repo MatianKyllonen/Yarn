@@ -22,7 +22,6 @@ public class Arrow : MonoBehaviour
     {
         if (collision != null)
         {
-            print(collision.name);
             if (collision.gameObject.tag == "Player")
             {
                 GameManager.instance.GameOver(killer);

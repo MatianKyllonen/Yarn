@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 703918539624101392}
   - component: {fileID: 1987534799504893917}
   - component: {fileID: 598280251194640408}
+  - component: {fileID: 326750405650344882}
   m_Layer: 0
   m_Name: 'GreenGem '
   m_TagString: Untagged
@@ -275,6 +276,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &326750405650344882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513584556937786943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036d8d8f3de455b45abb96b725578a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinValue: 15
 --- !u!1 &3090806621119255796
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,8 +300,9 @@ GameObject:
   - component: {fileID: 5499685827803396169}
   - component: {fileID: 2454849380325415555}
   - component: {fileID: 1266161063909594700}
+  - component: {fileID: 5863973959335381958}
   m_Layer: 0
-  m_Name: CoinSprite
+  m_Name: GoldSproite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,6 +396,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5863973959335381958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3090806621119255796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036d8d8f3de455b45abb96b725578a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinValue: 10
 --- !u!1 &7728510067350132061
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +420,9 @@ GameObject:
   - component: {fileID: 765331570403029465}
   - component: {fileID: 5158597407719515408}
   - component: {fileID: 4087854801089419775}
+  - component: {fileID: 6116832514266948019}
   m_Layer: 0
-  m_Name: KolikeSilver
+  m_Name: CoinSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,6 +516,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6116832514266948019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728510067350132061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036d8d8f3de455b45abb96b725578a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinValue: 5
 --- !u!1 &9191815923462926053
 GameObject:
   m_ObjectHideFlags: 0

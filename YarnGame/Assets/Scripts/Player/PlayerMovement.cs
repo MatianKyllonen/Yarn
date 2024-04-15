@@ -39,22 +39,22 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if(!inMenu) 
-            StartCoroutine(AddSpeed());
     }
 
     private void Update()
     {
+
+        
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.65f, groundLayer);
 
         // Check if the raycast hits something
         if (hit.collider != null)
         {
-                // Player is grounded
-                isGrounded = true;
+            // Player is grounded
+            isGrounded = true;
         }
         else
-         isGrounded= false;
+            isGrounded = false;
 
 
 
@@ -62,9 +62,9 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isJumping", false);
-            currentMoveSpeed = baseMoveSpeed;
+            currentMoveSpeed = baseMoveSpeed + (gameObject.transform.position.x / 200);
 
-            if(groundPounding)
+            if (groundPounding)
             {
                 animator.SetBool("isGroundPounding", false);
                 groundPounding = false;
@@ -96,25 +96,25 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<CircleCollider2D>().enabled = true;
             isSliding = true;
             animator.SetBool("isSliding", true);
-            baseMoveSpeed += 2;
+            baseMoveSpeed += 1.5f;
 
         }
 
-        if(Input.GetKeyUp(down) && isSliding || Input.GetAxisRaw("Vertical") >= 0 && isSliding)
+        if (Input.GetKeyUp(down) && isSliding || Input.GetAxisRaw("Vertical") >= 0 && isSliding)
         {
             Destroy(particle);
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             isSliding = false;
             animator.SetBool("isSliding", false);
-            baseMoveSpeed -= 2;
+            baseMoveSpeed -= 1.5f;
         }
 
 
         if (transform.position.y < -2 && !inMenu)
             GameManager.instance.GameOverFadeOut();
-            
-        if(!swinging)
+
+        if (!swinging)
             rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
         else
         {
@@ -122,19 +122,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+
         // Jumping
-        if (isGrounded && Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {          
+        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Space)))
+        {
+            // Set initial jump velocity
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-    }
 
-    IEnumerator AddSpeed()
-    {
-        yield return new WaitForSeconds(3);
-        baseMoveSpeed += 0.1f;
-        currentMoveSpeed = baseMoveSpeed;
-        StartCoroutine(AddSpeed());
-    }
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (2f - 1) * Time.deltaTime;
+        }
 
-}
+       
+    }
+ }
+    
+

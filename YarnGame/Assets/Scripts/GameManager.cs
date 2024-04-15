@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     private int distance;
     private bool fading;
 
-    public GameObject deathParticle; 
+    public GameObject deathParticle;
     public GameObject fadeOutImage;
+    public GameObject black;
+
     public TextMeshProUGUI coinsText;
     public TextMeshProUGUI timerText;
 
@@ -34,11 +36,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI killerText;
 
     public TextMeshProUGUI gocoinsText;
+    public TextMeshProUGUI victimsText;
     public TextMeshProUGUI gotimerText;
     public TextMeshProUGUI goDistanceText;
-    
 
-
+    private Dictionary<string, int> enemyKills = new Dictionary<string, int>(); // Track kills for each enemy type
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,14 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         player = FindObjectOfType<PlayerMovement>().gameObject;
+
+        // Load kills for each enemy type from PlayerPrefs
+        foreach (var enemyInfo in enemyDatabase.enemyInfoList)
+        {
+            string enemyName = enemyInfo.enemyType.ToString();
+            int kills = PlayerPrefs.GetInt(enemyName + "_Kills", 0);
+            enemyKills[enemyName] = kills;
+        }
     }
 
     // Update is called once per frame
@@ -58,13 +68,11 @@ public class GameManager : MonoBehaviour
         {
             s += 1f * Time.deltaTime;
 
-            if(s >= 60)
+            if (s >= 60)
             {
                 m += 1;
                 s = 0;
             }
-
-
 
             if (m != 0)
                 if (s < 10)
@@ -72,18 +80,14 @@ public class GameManager : MonoBehaviour
                 else
                     timerText.text = (m.ToString() + ":" + s.ToString("F2"));
             else
-                    timerText.text = (s.ToString("F2"));
-
+                timerText.text = (s.ToString("F2"));
 
             if (Input.GetKeyDown(KeyCode.V))
                 s += 10;
 
-
             distanceText.text = (distance.ToString() + "0" + " M");
-            coinsText.text = (coins.ToString() + "0");
-            
+            coinsText.text = (coins.ToString());
         }
-            
 
         if (fading)
         {
@@ -94,34 +98,64 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(string killer)
     {
+        // Increment kills for the specific enemy type
+        if (enemyKills.ContainsKey(killer))
+            enemyKills[killer]++;
+        else
+            enemyKills[killer] = 1;
+
+        // Save kills for each enemy type to PlayerPrefs
+        foreach (var enemyInfo in enemyDatabase.enemyInfoList)
+        {
+            string enemyName = enemyInfo.enemyType.ToString();
+            PlayerPrefs.SetInt(enemyName + "_Kills", enemyKills[enemyName]);
+        }
+        PlayerPrefs.Save();
 
         player.GetComponent<PlayerMovement>().enabled = false;
         player.GetComponent<Rigidbody2D>().isKinematic = true;
 
         if (!dead)
         {
-            
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             GameObject deathEffect = Instantiate(deathParticle, player.transform);
             deathEffect.transform.position = new Vector3(deathEffect.transform.position.x, deathEffect.transform.position.y - 1);
             player.GetComponentInChildren<SpriteRenderer>().enabled = false;
             StartCoroutine(ShowScore(killer));
-
         }
-
-            
     }
 
     public void GameOverFadeOut()
     {
+        StartCoroutine(ILoveBlackMenShakingTheirCheeks());
         if (!dead)
             fading = true;
 
         player.GetComponent<PlayerMovement>().enabled = false;
+
+        if (enemyKills.ContainsKey("Void"))
+            enemyKills["Void"]++;
+        else
+            enemyKills["Void"] = 1;
+
+        // Save kills for each enemy type to PlayerPrefs
+        foreach (var enemyInfo in enemyDatabase.enemyInfoList)
+        {
+            string enemyName = enemyInfo.enemyType.ToString();
+            PlayerPrefs.SetInt(enemyName + "_Kills", enemyKills[enemyName]);
+        }
+
+        PlayerPrefs.Save();
+
         StartCoroutine(ShowScore("Void"));
+
     }
 
-
+    IEnumerator ILoveBlackMenShakingTheirCheeks()
+    {
+        yield return new WaitForSeconds(2);
+        black.SetActive(true);
+    }
 
     IEnumerator ShowScore(string killer)
     {
@@ -130,6 +164,13 @@ public class GameManager : MonoBehaviour
         goDistanceText.text = distanceText.text;
         gocoinsText.text = coinsText.text;
         gotimerText.text = timerText.text;
+
+        int kills = 0;
+        if (enemyKills.ContainsKey(killer))
+        {
+            kills = enemyKills[killer];
+        }
+        victimsText.text = "Victims: " + kills.ToString();
 
         Sprite killerSprite = GetKillerSprite(killer);
         if (killerSprite != null)
@@ -141,8 +182,11 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         gameOverScreen.SetActive(true);
-        killerText.text = killer;      
+        killerText.text = killer;
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
+
 
     private Sprite GetKillerSprite(string killerName)
     {
@@ -157,11 +201,8 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameObject.Find("Fade").GetComponent<Nyooooom>().Bust();
     }
-    
 }
