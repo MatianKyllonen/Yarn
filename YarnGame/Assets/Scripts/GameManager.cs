@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(string killer)
     {
+        if (dead)
+            return;
         // Increment kills for the specific enemy type
         if (enemyKills.ContainsKey(killer))
             enemyKills[killer]++;

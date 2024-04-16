@@ -59,8 +59,8 @@ public class HookPoint : MonoBehaviour
 
             // Set the swing position to follow a circular trajectory
             float swingRadius = 1f; // Adjust this value as needed
-            float swingX = transform.position.x + Mathf.Cos(angle) * swingRadius;
-            float swingY = transform.position.y + Mathf.Sin(angle) * swingRadius;
+            float swingX = transform.position.x + Mathf.Cos(angle) * swingRadius * Time.deltaTime;
+            float swingY = transform.position.y + Mathf.Sin(angle) * swingRadius * Time.deltaTime;
 
             // Update the swing line renderer
             line.positionCount = 2;
