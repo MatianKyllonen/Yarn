@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode up;
     public KeyCode down;
 
+    public AudioClip jumpSfx;
+    public AudioClip poundSfx;
+
 
     private void Start()
     {
@@ -64,8 +67,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
             currentMoveSpeed = baseMoveSpeed + (gameObject.transform.position.x / 200);
 
-            if (groundPounding)
+            if (groundPounding && !isSliding)
             {
+                GetComponent<AudioSource>().PlayOneShot(poundSfx, 0.3f);
                 animator.SetBool("isGroundPounding", false);
                 groundPounding = false;
                 Instantiate(groundPoundParticle, groundCheck.transform.position, Quaternion.identity);
@@ -126,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Space)))
         {
+            GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
             // Set initial jump velocity
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }

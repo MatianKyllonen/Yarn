@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject fadeOutImage;
     public GameObject black;
 
+    public AudioClip hitSound;
+
     public TextMeshProUGUI coinsText;
     public TextMeshProUGUI timerText;
 
@@ -100,6 +102,9 @@ public class GameManager : MonoBehaviour
     {
         if (dead)
             return;
+
+        player.GetComponent<AudioSource>().PlayOneShot(hitSound);
+
         // Increment kills for the specific enemy type
         if (enemyKills.ContainsKey(killer))
             enemyKills[killer]++;

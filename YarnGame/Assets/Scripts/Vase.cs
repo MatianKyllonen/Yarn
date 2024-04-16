@@ -8,6 +8,9 @@ public class Vase : MonoBehaviour
     public GameObject coinPrefab;
     private Animator currentAnimator;
 
+    public AudioClip breakSfx;
+    public AudioClip breakSfx2;
+
     private void Start()
     {
         // Randomly choose a sprite variation and activate it
@@ -31,6 +34,10 @@ public class Vase : MonoBehaviour
         {
             if (collision.GetComponent<PlayerMovement>().groundPounding)
             {
+                if(Random.Range(0, 2) == 1)
+                    collision.GetComponent<AudioSource>().PlayOneShot(breakSfx);
+                else
+                    collision.GetComponent<AudioSource>().PlayOneShot(breakSfx2);
                 currentAnimator.SetTrigger("Broken");
 
                 if (Random.Range(0f, 1f) > 0.8f)
