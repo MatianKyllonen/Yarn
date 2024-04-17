@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Jumping
-        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Space)))
+        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space)) || isGrounded && Input.GetAxis("Vertical") > 0)
         {
             GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
             // Set initial jump velocity
