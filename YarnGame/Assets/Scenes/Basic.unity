@@ -1596,7 +1596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &256893103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11230,14 +11230,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5251322837082999628, guid: 5e72dc327f14ccb48b03c735a6615259, type: 3}
-      propertyPath: jumpSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 9a51de2302346e648bfac553abb3a1f0, type: 3}
-    - target: {fileID: 5251322837082999628, guid: 5e72dc327f14ccb48b03c735a6615259, type: 3}
-      propertyPath: poundSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 23a034a58d822fd4b89e377a10852139, type: 3}
     - target: {fileID: 7812271826192116559, guid: 5e72dc327f14ccb48b03c735a6615259, type: 3}
       propertyPath: m_Name
       value: Player

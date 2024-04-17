@@ -314,6 +314,8 @@ MonoBehaviour:
   slideParticle: {fileID: 4481104456607558848, guid: b035cafcc3768ef4e9aea6a98b8e2d50, type: 3}
   up: 119
   down: 115
+  jumpSfx: {fileID: 8300000, guid: 9a51de2302346e648bfac553abb3a1f0, type: 3}
+  poundSfx: {fileID: 8300000, guid: 23a034a58d822fd4b89e377a10852139, type: 3}
 --- !u!50 &3234465427180928784
 Rigidbody2D:
   serializedVersion: 4
