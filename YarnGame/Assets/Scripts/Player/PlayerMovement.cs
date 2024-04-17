@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Jumping
-        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Space)))
+        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space)) || isGrounded && Input.GetAxis("Vertical") > 0)
         {
             // Set initial jump velocity
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
