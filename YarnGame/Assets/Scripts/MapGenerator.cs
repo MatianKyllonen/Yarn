@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
     private List<GameObject> activeAreas = new List<GameObject>();
     private Transform player;
     private float lastAreaX;
+    private GameObject lastArea;
 
     private bool transition1Triggered = false;
     private bool transition2Triggered = false;
@@ -37,24 +38,33 @@ public class MapGenerator : MonoBehaviour
         player = FindObjectOfType<PlayerMovement>().transform;
         lastAreaX = player.position.x;
         currentSpawnables = areaPrefabs1;
-        GenerateInitialAreas();
-    }
-
-    void GenerateInitialAreas()
-    {
-        while (lastAreaX < player.position.x + distanceBetweenAreas)
-        {
-            SpawnArea(currentSpawnables);
-        }
     }
 
     void SpawnArea(List<GameObject> prefabList)
     {
+
         Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
         int randomIndex = Random.Range(0, prefabList.Count);
-        GameObject newArea = Instantiate(prefabList[randomIndex], spawnPosition, Quaternion.identity);
-        activeAreas.Add(newArea);
-        lastAreaX = newArea.transform.position.x;
+        GameObject newArea = prefabList[randomIndex];
+
+        GameObject ToSpawn = newArea;
+        // Check if the new area is the same as the last area
+        if (newArea == lastArea && lastArea != null)
+        {
+            // Calculate the index for the previous area (index - 1)
+            int previousIndex = (randomIndex + 1) % prefabList.Count;
+
+            ToSpawn = prefabList[previousIndex];
+            
+        }
+
+        GameObject go = Instantiate(ToSpawn, spawnPosition, Quaternion.identity);
+        lastAreaX = go.transform.position.x;
+
+        // Update references
+        lastArea = newArea;
+        activeAreas.Add(go);
+        
     }
 
     void Update()
@@ -73,14 +83,15 @@ public class MapGenerator : MonoBehaviour
 
         }
 
-        if (player.transform.position.x >= 350 && !transition2Triggered)
+        if (player.transform.position.x >= 200 && !transition2Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs3;
             transition2Triggered = true;
-            StartCoroutine(ChangeBg(zone3bg, 0.15f, 400));
+            StartCoroutine(ChangeBg(zone3bg, 0.15f, 250));
+            print("hello world");
 
         }
     }

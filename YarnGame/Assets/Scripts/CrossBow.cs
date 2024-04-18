@@ -8,6 +8,10 @@ public class CrossBow : MonoBehaviour
     private bool fired = false;
     public LayerMask playerMask;
 
+    public AudioClip shootSfx;
+
+    private GameObject player;
+
     private void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 15f, playerMask);
@@ -16,6 +20,7 @@ public class CrossBow : MonoBehaviour
         {
             if(hit.collider.gameObject.tag == "Player" && !fired)
             {
+                player = hit.collider.gameObject;
                 fired = true;
                 gameObject.GetComponentInChildren<Animator>().SetTrigger("Fire");
             }
@@ -26,6 +31,7 @@ public class CrossBow : MonoBehaviour
 
     public void ShootArrow()
     {
+        player.GetComponent<AudioSource>().PlayOneShot(shootSfx);
         Vector3 spawnPos = new Vector2(transform.position.x - 0.5f, transform.position.y);
         Instantiate(Arrow, spawnPos, Quaternion.identity);    
     }

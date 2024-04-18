@@ -10,6 +10,8 @@ public class DergEnemy : MonoBehaviour
     public GameObject fireBall;
     public GameObject fireBallDown;
 
+    public AudioClip fireSfx;
+
     private float startPosition;
     private bool shooting;
 
@@ -39,6 +41,7 @@ public class DergEnemy : MonoBehaviour
 
     public void shootFireBall()
     {
+        GameObject.Find("Player").GetComponent<AudioSource>().PlayOneShot(fireSfx, 0.7f);
         shooting = false;
         Vector3 spawnPos = new Vector2(transform.position.x - 0.5f, transform.position.y);
         int x = Random.Range(0, 2);

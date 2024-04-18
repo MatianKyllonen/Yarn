@@ -163,7 +163,7 @@ MonoBehaviour:
   - {fileID: 5319976141261060509}
   - {fileID: 8220561457587357729}
   coinPrefab: {fileID: 1051114944217051189, guid: 07a2837711d0ed04e91bc741b6c9dc35, type: 3}
-  breakSfx: {fileID: 8300000, guid: 417d41e3c86a7b14486d8d5cc8c76d1b, type: 3}
+  breakSfx: {fileID: 8300000, guid: cd1fc4e8d575f754a9a48a32b6c96a3b, type: 3}
   breakSfx2: {fileID: 8300000, guid: cd1fc4e8d575f754a9a48a32b6c96a3b, type: 3}
 --- !u!61 &82347279302967131
 BoxCollider2D:

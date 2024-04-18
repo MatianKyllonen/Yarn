@@ -124,6 +124,7 @@ MonoBehaviour:
   moveSpeed: 1
   fireBall: {fileID: 6673624885951241984, guid: b64ef97703ac33740b8a8511a33642dd, type: 3}
   fireBallDown: {fileID: 8552661032692735954, guid: f902dc268d9118446908603ac8d296d2, type: 3}
+  fireSfx: {fileID: 8300000, guid: d2139a5aec516734190c9cc017cbe46e, type: 3}
 --- !u!61 &6736583945717534686
 BoxCollider2D:
   m_ObjectHideFlags: 0

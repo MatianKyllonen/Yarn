@@ -35,9 +35,9 @@ public class Vase : MonoBehaviour
             if (collision.GetComponent<PlayerMovement>().groundPounding)
             {
                 if(Random.Range(0, 2) == 1)
-                    collision.GetComponent<AudioSource>().PlayOneShot(breakSfx);
+                    collision.GetComponent<AudioSource>().PlayOneShot(breakSfx, 0.5f);
                 else
-                    collision.GetComponent<AudioSource>().PlayOneShot(breakSfx2);
+                    collision.GetComponent<AudioSource>().PlayOneShot(breakSfx2, 0.5f);
                 currentAnimator.SetTrigger("Broken");
 
                 if (Random.Range(0f, 1f) > 0.8f)

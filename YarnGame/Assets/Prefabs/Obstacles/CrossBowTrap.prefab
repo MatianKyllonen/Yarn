@@ -155,3 +155,4 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+  shootSfx: {fileID: 8300000, guid: 1e685f9536eb68c4ca3a12a6487027f3, type: 3}

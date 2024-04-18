@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject slideParticle;
     private GameObject particle;
 
+    private bool jumped;
+
     [Header("Binds")]
     public KeyCode up;
     public KeyCode down;
@@ -48,11 +50,11 @@ public class PlayerMovement : MonoBehaviour
     {
 
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.65f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.65f, groundLayer);
 
         // Check if the raycast hits something
         if (hit.collider != null)
-        {
+        {        
             // Player is grounded
             isGrounded = true;
         }
@@ -100,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<CircleCollider2D>().enabled = true;
             isSliding = true;
             animator.SetBool("isSliding", true);
-            baseMoveSpeed += 1.5f;
+            baseMoveSpeed += 2f;
 
         }
 
@@ -111,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             isSliding = false;
             animator.SetBool("isSliding", false);
-            baseMoveSpeed -= 1.5f;
+            baseMoveSpeed -= 2f;
         }
 
 
@@ -130,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space)) || isGrounded && Input.GetAxis("Vertical") > 0)
         {
+            
             GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
             // Set initial jump velocity
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
