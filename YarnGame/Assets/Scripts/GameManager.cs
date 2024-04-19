@@ -4,16 +4,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public TextMeshProUGUI distanceText;
-    private GameObject player;
+    [HideInInspector]
+    public GameObject player;
     public int score;
-    public int coins;
-    private int distance;
+    public float coins;
+    private float distance;
     private bool fading;
 
     public GameObject deathParticle;
@@ -192,6 +194,14 @@ public class GameManager : MonoBehaviour
         killerText.text = killer;
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
+
+        score = Mathf.RoundToInt((distance + coins) - float.Parse(gotimerText.text));
+
+        if (IsTopScore(score))
+        {
+            // Save the score if it's among the top 5
+            SaveScore(score);
+        }
     }
 
 
@@ -207,6 +217,68 @@ public class GameManager : MonoBehaviour
         // If no match found, return a default sprite or handle it as needed
         return null;
     }
+
+    private bool IsTopScore(int distance)
+    {
+        // Load existing top scores from PlayerPrefs
+        List<int> topScores = new List<int>();
+        for (int i = 0; i < 5; i++)
+        {
+            int record = PlayerPrefs.GetInt("TopScore_" + i);
+            topScores.Add(record);
+        }
+
+        // Check if the distance is greater than any of the top scores
+        foreach (int record in topScores)
+        {
+            if (score > record)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void SaveScore(int score)
+    {
+        // Load existing top scores from PlayerPrefs
+        List<int> topScores = new List<int>();
+        for (int i = 0; i < 5; i++)
+        {
+            int record = PlayerPrefs.GetInt("TopScore_" + i);
+            topScores.Add(record);
+        }
+
+        // Check where the new score fits in the top scores list
+        int insertIndex = -1;
+        for (int i = 0; i < topScores.Count; i++)
+        {
+            if (score > topScores[i])
+            {
+                insertIndex = i;
+                break;
+            }
+        }
+
+        // If the new score is among the top 5, insert it into the list
+        if (insertIndex != -1)
+        {
+            topScores.Insert(insertIndex, score);
+            // Remove the lowest score if the list exceeds 5 scores
+            if (topScores.Count > 5)
+            {
+                topScores.RemoveAt(5);
+            }
+
+            // Save the updated top scores back to PlayerPrefs
+            for (int i = 0; i < topScores.Count; i++)
+            {
+                PlayerPrefs.SetInt("TopScore_" + i, topScores[i]);
+            }
+        }
+    }
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

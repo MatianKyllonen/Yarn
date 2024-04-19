@@ -398,7 +398,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7812271826192116559}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 96c028dd60c75db4e905b00ba2c01647, type: 2}
+  m_Material: {fileID: 6200000, guid: 669d7bb85f393e84187f969ab8c89db0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -433,7 +433,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 7812271826192116559}
   m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 669d7bb85f393e84187f969ab8c89db0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
