@@ -114,5 +114,12 @@ public class HookPoint : MonoBehaviour
 
             // Update the swing line renderer
             line.positionCount = 2;
+            line.SetPosition(0, new Vector3(player.transform.position.x, player.transform.position.y + 0.65f));
+            line.SetPosition(1, transform.position);
+
+            // Apply swing force
+            swingForceDirection = new Vector2(swingY - player.transform.position.y, player.transform.position.x - swingX);
+            playerRb.AddForce(swingForceDirection.normalized * ((swingForce + playerRb.velocity.magnitude) * 100 + playerRb.gameObject.GetComponent<PlayerMovement>().currentMoveSpeed) * Time.deltaTime);
+        }
     }
 }
