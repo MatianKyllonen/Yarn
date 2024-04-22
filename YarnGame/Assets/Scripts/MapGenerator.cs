@@ -83,14 +83,14 @@ public class MapGenerator : MonoBehaviour
 
         }
 
-        if (player.transform.position.x >= 200 && !transition2Triggered)
+        if (player.transform.position.x >= 350 && !transition2Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs3;
             transition2Triggered = true;
-            StartCoroutine(ChangeBg(zone3bg, 0.15f, 250));
+            StartCoroutine(ChangeBg(zone3bg, 0.15f, 400));
             print("hello world");
 
         }

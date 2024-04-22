@@ -195,7 +195,8 @@ public class GameManager : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
 
-        score = Mathf.RoundToInt((distance + coins) - float.Parse(gotimerText.text));
+
+       score = Mathf.RoundToInt((distance + coins) - ((m * 60) + s));
 
         if (IsTopScore(score))
         {

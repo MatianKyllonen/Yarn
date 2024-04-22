@@ -129,8 +129,10 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
+
         // Jumping
-        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space)) || isGrounded && Input.GetAxis("Vertical") > 0)
+        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space)))
         {
             
             GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
@@ -145,6 +147,12 @@ public class PlayerMovement : MonoBehaviour
 
        
     }
- }
+
+    public void DetachFromRope()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 6);
+    }
+
+}
     
 
