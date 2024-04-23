@@ -10,6 +10,9 @@ public class Chest : MonoBehaviour
     public GameObject coinPrefab;
     public float coinSpeed = 5f;
     public int numberOfCoins = 3;
+    private GameObject player;
+
+    public AudioClip coinSpawnSfx;
 
     private void Start()
     {
@@ -24,6 +27,8 @@ public class Chest : MonoBehaviour
         {
             if (collision.GetComponent<PlayerMovement>().groundPounding)
             {
+                player = collision.gameObject;
+
                 sr.sprite = openChest;
 
                 StartCoroutine(SpawnCoins());
@@ -35,8 +40,9 @@ public class Chest : MonoBehaviour
     {
         
 
-        for (int i = 0; i < numberOfCoins; i++)
+        for (int i = 0; i < Random.Range(2,5); i++)
         {
+
             GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
             // Set the velocity of the coin to shoot upward at a random 75-degree angle
             float angle = Random.Range(9.5f, 15.5f); // Angle range from 7.5 to 10.5 degrees
@@ -44,6 +50,8 @@ public class Chest : MonoBehaviour
             coin.GetComponent<Rigidbody2D>().velocity = randomDirection * coinSpeed;
             // Activate the coin's collider after a delay
             yield return new WaitForSeconds(0.075f);
+
+            player.GetComponent<AudioSource>().PlayOneShot(coinSpawnSfx, 0.3f);
 
             coin.GetComponent<CircleCollider2D>().enabled = true;
 

@@ -45,11 +45,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0afd4139ba0c1b4aa437695e0e0b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToSpawn:
+  objectsToSpawn1:
+  - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 7319398372394101246, guid: 77ed7a4abf05bb34693ea23aef186da0, type: 3}
+  - {fileID: 7319398372394101246, guid: 77ed7a4abf05bb34693ea23aef186da0, type: 3}
+  - {fileID: 7319398372394101246, guid: 77ed7a4abf05bb34693ea23aef186da0, type: 3}
+  objectsToSpawn2:
   - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
   - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
   - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
   - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 7319398372394101246, guid: 36490459a4c9a904cb280fd58b8e73dd, type: 3}
+  - {fileID: 7319398372394101246, guid: cabd64702a663044e81343781b47c0fb, type: 3}
+  - {fileID: 7319398372394101246, guid: eff4d95eadc57784e8e32ba066f50d23, type: 3}
+  - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
+  - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
+  objectsToSpawn3:
+  - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
+  - {fileID: 7319398372394101246, guid: d0e0c6fb507fe0c449162bb3e1f7d7d4, type: 3}
+  - {fileID: 7319398372394101246, guid: ab065a0526eb71d47bb888bc8d42b7c7, type: 3}
+  - {fileID: 7319398372394101246, guid: b723b4d6bb65ef748837f1b9b4195d07, type: 3}
+  - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
+  - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
+  - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
   - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
 --- !u!212 &2902371806993995547
 SpriteRenderer:

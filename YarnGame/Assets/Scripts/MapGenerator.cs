@@ -47,18 +47,17 @@ public class MapGenerator : MonoBehaviour
         int randomIndex = Random.Range(0, prefabList.Count);
         GameObject newArea = prefabList[randomIndex];
 
-        GameObject ToSpawn = newArea;
         // Check if the new area is the same as the last area
         if (newArea == lastArea && lastArea != null)
         {
             // Calculate the index for the previous area (index - 1)
             int previousIndex = (randomIndex + 1) % prefabList.Count;
 
-            ToSpawn = prefabList[previousIndex];
+            newArea = prefabList[previousIndex];
             
         }
 
-        GameObject go = Instantiate(ToSpawn, spawnPosition, Quaternion.identity);
+        GameObject go = Instantiate(newArea, spawnPosition, Quaternion.identity);
         lastAreaX = go.transform.position.x;
 
         // Update references
@@ -91,7 +90,6 @@ public class MapGenerator : MonoBehaviour
             currentSpawnables = areaPrefabs3;
             transition2Triggered = true;
             StartCoroutine(ChangeBg(zone3bg, 0.15f, 400));
-            print("hello world");
 
         }
     }

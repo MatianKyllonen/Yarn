@@ -1350,6 +1350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceText: {fileID: 2015354045}
+  player: {fileID: 0}
   score: 0
   coins: 0
   deathParticle: {fileID: 8465101421886826763, guid: c7d40ad09563f68498c16c8422269546, type: 3}
@@ -7142,6 +7143,9 @@ MonoBehaviour:
   - {fileID: 8436353874801190703, guid: c14671d2eda2fa547bab74e40e466351, type: 3}
   - {fileID: 8436353874801190703, guid: 70dc9186d2ebafe46891f9f9fa4adf30, type: 3}
   - {fileID: 8436353874801190703, guid: 8dde4dbf1c360b94aa9120d0db1dd93c, type: 3}
+  - {fileID: 8436353874801190703, guid: a696369808b423842b2e82173c294dc9, type: 3}
+  - {fileID: 8436353874801190703, guid: 1203b602343aa7f40b4c190b3a56c6a4, type: 3}
+  - {fileID: 8436353874801190703, guid: 3d1e421676d312541af21cb79c1cc5ab, type: 3}
   transitionArea: {fileID: 8436353874801190703, guid: 505c75719476a7d40bcb0991426c9da8, type: 3}
   areaWidth: 20
   distanceBetweenAreas: 20

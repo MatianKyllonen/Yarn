@@ -134,6 +134,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1051114944217051189, guid: 07a2837711d0ed04e91bc741b6c9dc35, type: 3}
   coinSpeed: 15
   numberOfCoins: 3
+  coinSpawnSfx: {fileID: 8300000, guid: e1f2e68b25c5b8449baabbad8e9446ea, type: 3}
 --- !u!61 &6870366312655520575
 BoxCollider2D:
   m_ObjectHideFlags: 0

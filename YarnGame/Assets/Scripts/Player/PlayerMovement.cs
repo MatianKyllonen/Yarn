@@ -23,14 +23,16 @@ public class PlayerMovement : MonoBehaviour
     private bool isSliding = false;
 
     [HideInInspector]  public bool swinging;
-    
+
+    private bool spedUp = false;
 
     [Header("Particles")]
     public GameObject groundPoundParticle;
     public GameObject slideParticle;
     private GameObject particle;
 
-    private bool jumped;
+
+    private bool checkingSpeed;
 
     [Header("Binds")]
     public KeyCode up;
@@ -42,8 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
+        rb = GetComponent<Rigidbody2D>();     
     }
 
     private void Update()
@@ -102,7 +103,12 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<CircleCollider2D>().enabled = true;
             isSliding = true;
             animator.SetBool("isSliding", true);
-            baseMoveSpeed += 2f;
+
+            if (!spedUp)
+            {
+                baseMoveSpeed += 1.75f;
+                spedUp = true;
+            }
 
         }
 
@@ -112,8 +118,11 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             isSliding = false;
+            
             animator.SetBool("isSliding", false);
-            baseMoveSpeed -= 2f;
+
+            if(!checkingSpeed)
+                StartCoroutine(DelaySlideSpeedChange());
         }
 
 
@@ -122,13 +131,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (!swinging)
             rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
+
         else
         {
             rb.velocity = Vector2.zero;
         }
-
-
-
 
 
         // Jumping
@@ -148,9 +155,25 @@ public class PlayerMovement : MonoBehaviour
        
     }
 
-    public void DetachFromRope()
+    private IEnumerator DelaySlideSpeedChange()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 6);
+        checkingSpeed = true;
+
+        yield return new WaitForSeconds(0.1f);
+
+        if (!isSliding)
+        {
+            spedUp = false;
+            baseMoveSpeed -= 1.75f;
+        }
+
+        checkingSpeed = false;
+
+    }
+
+    public void DetachFromRope(float force)
+    {
+        rb.velocity = new Vector2(rb.velocity.x + 1f, force);
     }
 
 }

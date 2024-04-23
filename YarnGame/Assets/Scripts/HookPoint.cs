@@ -5,6 +5,8 @@ public class HookPoint : MonoBehaviour
     private bool playerInRange = false;
     private bool swinging = false;
     private bool swung = false;
+    private bool noJumping = true;
+
     private Vector2 swingForceDirection;
 
     private GameObject player;
@@ -34,7 +36,7 @@ public class HookPoint : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
 
-            if (distance < catchDistance && transform.position.y > GameManager.instance.player.transform.position.y && transform.position.x > GameManager.instance.player.transform.position.x)
+            if (distance < catchDistance && transform.position.y > GameManager.instance.player.transform.position.y && transform.position.x + 1.5f > GameManager.instance.player.transform.position.x)
             {
                 GetComponentInChildren<SpriteRenderer>().enabled = true;
                 playerInRange = true;
@@ -47,8 +49,15 @@ public class HookPoint : MonoBehaviour
                 player.GetComponent<PlayerMovement>().swinging = false;
                 swinging = false;
                 playerInRange = false;
-                player.GetComponent<PlayerMovement>().DetachFromRope();
-                ApplySwingForce();
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+
+                if (!noJumping)
+                {
+                    player.GetComponent<PlayerMovement>().DetachFromRope(7);
+                    ApplySwingForce();
+                }
+                    
             }
 
             if (playerInRange && !swung)
@@ -58,6 +67,7 @@ public class HookPoint : MonoBehaviour
                     GetComponentInChildren<SpriteRenderer>().enabled = false;
                     player.GetComponent<PlayerMovement>().swinging = true;
                     swinging = true;
+                    noJumping = false;
                 }
 
                 if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0))
@@ -65,8 +75,8 @@ public class HookPoint : MonoBehaviour
                     line.positionCount = 0;
                     player.GetComponent<PlayerMovement>().swinging = false;
                     swinging = false;
-
-                    player.GetComponent<PlayerMovement>().DetachFromRope();
+                    noJumping = true;
+                    player.GetComponent<PlayerMovement>().DetachFromRope(4);
                     ApplySwingForce();
 
 
