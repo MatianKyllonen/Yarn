@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public bool inMenu;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
     public SpriteRenderer rope;
     [HideInInspector] public bool groundPounding;
     private bool isSliding = false;
@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip jumpSfx;
     public AudioClip poundSfx;
 
+    private bool jumping;
+
 
     private void Start()
     {
@@ -50,8 +52,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        
-        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.65f, groundLayer);
+        if (Input.GetKeyDown(KeyCode.K))
+            baseMoveSpeed += 1;
+
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.2f, groundLayer);
 
         // Check if the raycast hits something
         if (hit.collider != null)
@@ -75,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 GetComponent<AudioSource>().PlayOneShot(poundSfx, 0.3f);
                 animator.SetBool("isGroundPounding", false);
                 groundPounding = false;
-                Instantiate(groundPoundParticle, groundCheck.transform.position, Quaternion.identity);
+                Instantiate(groundPoundParticle, new Vector2(groundCheck.transform.position.x + 1.5f, groundCheck.transform.position.y), Quaternion.identity);
             }
         }
         else
@@ -139,16 +143,20 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Jumping
-        if (isGrounded && (Input.GetKeyDown(KeyCode.JoystickButton0) || isGrounded && Input.GetKeyDown(KeyCode.Space)))
-        {
-            
-            GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
-            // Set initial jump velocity
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        if (Input.GetKey(KeyCode.JoystickButton0) || Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Vertical") > 0)
+        {            if(isGrounded && !jumping)
+            {
+                jumping = true;
+
+                GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
+                // Set initial jump velocity
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
         }
 
         if (rb.velocity.y < 0)
         {
+            jumping = false;
             rb.velocity += Vector2.up * Physics2D.gravity.y * (2f - 1) * Time.deltaTime;
         }
 
@@ -159,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
     {
         checkingSpeed = true;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.25f);
 
         if (!isSliding)
         {

@@ -64,10 +64,13 @@ public class HookPoint : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
                 {
-                    GetComponentInChildren<SpriteRenderer>().enabled = false;
-                    player.GetComponent<PlayerMovement>().swinging = true;
-                    swinging = true;
-                    noJumping = false;
+                    if(!player.GetComponent<PlayerMovement>().isGrounded)
+                    {
+                        GetComponentInChildren<SpriteRenderer>().enabled = false;
+                        player.GetComponent<PlayerMovement>().swinging = true;
+                        swinging = true;
+                        noJumping = false;
+                    }
                 }
 
                 if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0))

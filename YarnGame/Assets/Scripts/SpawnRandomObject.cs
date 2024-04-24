@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnRandomObject : MonoBehaviour
 {
 
-    private List<GameObject> currentSpawnList = new List<GameObject>();
+    private List<GameObject> currentSpawnList;
 
     public List<GameObject> objectsToSpawn1;
     public List<GameObject> objectsToSpawn2;
@@ -15,32 +15,24 @@ public class SpawnRandomObject : MonoBehaviour
 
     // Start is called before the first frame update
 
-    private void Awake()
+    
+    private void Start()
     {
+
         player = GameObject.Find("Player");
 
-    }
-    void Start()
-    {
-
-
-        if (player.transform.position.x > 100)
+        if (player.transform.position.x > 100 && player.transform.position.x < 350)
         {
-            print("Swap");
-            currentSpawnList.Clear();
-            currentSpawnList = objectsToSpawn2;
+            SpawnObject(objectsToSpawn2);
         }
-
-        if (player.transform.position.x > 350)
+        else if (player.transform.position.x > 350)
         {
-            currentSpawnList.Clear();
-            currentSpawnList = objectsToSpawn3;
+            SpawnObject(objectsToSpawn3);
         }
         else
-            currentSpawnList = objectsToSpawn1;
+            SpawnObject(objectsToSpawn1);
 
         GetComponent<SpriteRenderer>().enabled = false;
-        SpawnObject();
     }
 
     // Update is called once per frame
@@ -49,7 +41,7 @@ public class SpawnRandomObject : MonoBehaviour
     }
 
 
-    void SpawnObject()
+    void SpawnObject(List<GameObject> currentSpawnList)
     {
         if (currentSpawnList.Count > 0)
         {

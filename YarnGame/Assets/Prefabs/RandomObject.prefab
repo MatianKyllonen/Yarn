@@ -72,7 +72,6 @@ MonoBehaviour:
   - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
   - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
   - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
-  - {fileID: 1978470362804486298, guid: 4d6569f3eebeca040a4d79a6476ddbb3, type: 3}
 --- !u!212 &2902371806993995547
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class MapGenerator : MonoBehaviour
     public List<GameObject> areaPrefabs1;
     public List<GameObject> areaPrefabs2;
     public List<GameObject> areaPrefabs3;
+    public List<GameObject> areaPrefabs4;
 
     public GameObject transitionArea;
 
@@ -29,6 +30,7 @@ public class MapGenerator : MonoBehaviour
 
     public TextMeshProUGUI zoneText;
     public GameObject zone3bg;
+    public GameObject zone4bg;
 
     private int zoneNum = 1;
 
@@ -68,9 +70,10 @@ public class MapGenerator : MonoBehaviour
 
     void Update()
     {
+
         CheckAreaDistance();
 
-        if (player.transform.position.x >= 100 && !transition1Triggered)
+        /*if (player.transform.position.x >= 100 && !transition1Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
@@ -82,7 +85,7 @@ public class MapGenerator : MonoBehaviour
 
         }
 
-        if (player.transform.position.x >= 350 && !transition2Triggered)
+        /*if (player.transform.position.x >= 350 && !transition2Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
@@ -90,6 +93,18 @@ public class MapGenerator : MonoBehaviour
             currentSpawnables = areaPrefabs3;
             transition2Triggered = true;
             StartCoroutine(ChangeBg(zone3bg, 0.15f, 400));
+
+        }*/
+
+        if (player.transform.position.x >= 100 && !transition2Triggered)
+        {
+            Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
+            GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
+            lastAreaX = newArea.transform.position.x;
+            currentSpawnables = areaPrefabs4;
+            transition2Triggered = true;
+            zone3bg.SetActive(false);
+            StartCoroutine(ChangeBg(zone4bg, 0.15f, 150));
 
         }
     }
