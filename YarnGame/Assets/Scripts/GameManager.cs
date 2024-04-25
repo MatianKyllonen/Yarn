@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOverFadeOut()
+    public void GameOverFadeOut(string killer)
     {
         StartCoroutine(ILoveBlackMenShakingTheirCheeks());
         if (!dead)
@@ -142,10 +142,10 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().enabled = false;
 
-        if (enemyKills.ContainsKey("Void"))
-            enemyKills["Void"]++;
+        if (enemyKills.ContainsKey(killer))
+            enemyKills[killer]++;
         else
-            enemyKills["Void"] = 1;
+            enemyKills[killer] = 1;
 
         // Save kills for each enemy type to PlayerPrefs
         foreach (var enemyInfo in enemyDatabase.enemyInfoList)
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.Save();
 
-        StartCoroutine(ShowScore("Void"));
+        StartCoroutine(ShowScore(killer));
 
     }
 

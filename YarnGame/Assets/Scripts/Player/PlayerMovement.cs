@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     public bool inMenu;
+
+    private bool launching;
 
     private Rigidbody2D rb;
     public bool isGrounded;
@@ -52,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
+        Inputs();
+
         if (Input.GetKeyDown(KeyCode.K))
             baseMoveSpeed += 1;
 
@@ -72,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             animator.SetBool("isJumping", false);
-            currentMoveSpeed = baseMoveSpeed + (gameObject.transform.position.x / 200);
+            currentMoveSpeed = baseMoveSpeed + (gameObject.transform.position.x / 250);
 
             if (groundPounding && !isSliding)
             {
@@ -85,18 +90,72 @@ public class PlayerMovement : MonoBehaviour
         else
             animator.SetBool("isJumping", true);
 
-        //Ground Pound
-        if (Input.GetKey(down) && !isGrounded || Input.GetAxisRaw("Vertical") < 0 && !isGrounded)
+
+
+
+
+        if (transform.position.y < -2 && !inMenu)
         {
-            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 50f * Time.deltaTime);
-            groundPounding = true;
-            animator.SetBool("isGroundPounding", true);
+            if(transform.position.x > 400 && transform.position.x < 700)
+                GameManager.instance.GameOverFadeOut("Water");
+
+            else if (transform.position.x > 700)
+                GameManager.instance.GameOverFadeOut("Lava");
+            else
+                GameManager.instance.GameOverFadeOut("Void");
+
         }
+            
+
+
+
+        if (!swinging)
+            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
         else
         {
-            groundPounding = false;
-            animator.SetBool("isGroundPounding", false);
+            rb.velocity = Vector2.zero;
         }
+
+
+
+
+       
+    }
+
+    private void Inputs()
+    {
+        // Jumping
+        if (Input.GetKey(KeyCode.JoystickButton0) || Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Vertical") > 0)
+        {
+            if (isGrounded && !jumping)
+            {
+                jumping = true;
+
+                GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
+                // Set initial jump velocity
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            jumping = false;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (2f - 1) * Time.deltaTime;
+        }
+
+        //Ground Pound
+        if(!isGrounded && !launching)
+            if (Input.GetKey(down) || Input.GetAxisRaw("Vertical") < 0)
+            {
+                rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y - 50f * Time.deltaTime);
+                groundPounding = true;
+                animator.SetBool("isGroundPounding", true);
+            }
+            else
+            {
+                groundPounding = false;
+                animator.SetBool("isGroundPounding", false);
+            }
 
         //Sliding
         if (Input.GetKey(down) && isGrounded && !isSliding || Input.GetAxisRaw("Vertical") < 0 && isGrounded && !isSliding)
@@ -122,45 +181,12 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             isSliding = false;
-            
+
             animator.SetBool("isSliding", false);
 
-            if(!checkingSpeed)
+            if (!checkingSpeed)
                 StartCoroutine(DelaySlideSpeedChange());
         }
-
-
-        if (transform.position.y < -2 && !inMenu)
-            GameManager.instance.GameOverFadeOut();
-
-        if (!swinging)
-            rb.velocity = new Vector2(1 * currentMoveSpeed, rb.velocity.y);
-
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
-
-
-        // Jumping
-        if (Input.GetKey(KeyCode.JoystickButton0) || Input.GetKey(KeyCode.Space) || Input.GetAxisRaw("Vertical") > 0)
-        {            if(isGrounded && !jumping)
-            {
-                jumping = true;
-
-                GetComponent<AudioSource>().PlayOneShot(jumpSfx, 0.6f);
-                // Set initial jump velocity
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-        }
-
-        if (rb.velocity.y < 0)
-        {
-            jumping = false;
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (2f - 1) * Time.deltaTime;
-        }
-
-       
     }
 
     private IEnumerator DelaySlideSpeedChange()
@@ -182,6 +208,22 @@ public class PlayerMovement : MonoBehaviour
     public void DetachFromRope(float force)
     {
         rb.velocity = new Vector2(rb.velocity.x + 1f, force);
+    }
+
+    public void JumpLaunch()
+    {
+        launching = true;
+        if (groundPounding)
+            rb.velocity = new Vector2(rb.velocity.x, 12);
+        else
+            rb.velocity = new Vector2(rb.velocity.x, 10);
+        StartCoroutine(ResetLaunch());
+    }
+
+    private IEnumerator ResetLaunch()
+    {
+        yield return new WaitForSeconds(0.25f);
+        launching = false;
     }
 
 }

@@ -27,6 +27,10 @@ public class MapGenerator : MonoBehaviour
 
     private bool transition1Triggered = false;
     private bool transition2Triggered = false;
+    private bool transition3Triggered = false;
+
+    public GameObject Water;
+    public GameObject Lava;
 
     public TextMeshProUGUI zoneText;
     public GameObject zone3bg;
@@ -73,7 +77,7 @@ public class MapGenerator : MonoBehaviour
 
         CheckAreaDistance();
 
-        /*if (player.transform.position.x >= 100 && !transition1Triggered)
+        if (player.transform.position.x >= 100 && !transition1Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
@@ -85,31 +89,30 @@ public class MapGenerator : MonoBehaviour
 
         }
 
-        /*if (player.transform.position.x >= 350 && !transition2Triggered)
+        if (player.transform.position.x >= 350 && !transition2Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs3;
             transition2Triggered = true;
-            StartCoroutine(ChangeBg(zone3bg, 0.15f, 400));
+            StartCoroutine(ChangeBg(zone3bg, 0.15f, 400, null, Water));
 
-        }*/
+        }
 
-        if (player.transform.position.x >= 100 && !transition2Triggered)
+        if (player.transform.position.x >= 650 && !transition3Triggered)
         {
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs4;
-            transition2Triggered = true;
-            zone3bg.SetActive(false);
-            StartCoroutine(ChangeBg(zone4bg, 0.15f, 150));
+            transition3Triggered = true;         
+            StartCoroutine(ChangeBg(zone4bg, 0.15f, 700, zone3bg, Lava, Water));
 
         }
     }
 
-    private IEnumerator ChangeBg(GameObject bg, float delay, float treshhold)
+    private IEnumerator ChangeBg(GameObject bg, float delay, float treshhold, GameObject removableBg = null, GameObject voidSkin = null, GameObject removableVoidSkin = null)
     {
         while (player.transform.position.x < treshhold)
         {
@@ -120,7 +123,16 @@ public class MapGenerator : MonoBehaviour
         if (bg != null)
             bg.SetActive(true);
 
-        zoneText.text = ("Zone " + zoneNum);
+        if (removableBg != null)
+            removableBg.SetActive(false);
+
+        if (voidSkin != null)       
+            voidSkin.SetActive(true);
+
+        if (removableVoidSkin != null)
+            removableVoidSkin.SetActive(false);
+
+            zoneText.text = ("Zone " + zoneNum);
         zoneNum++;
         zoneText.GetComponent<Animator>().SetTrigger("Mogged");
     }
