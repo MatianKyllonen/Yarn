@@ -2678,10 +2678,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556010141165330414}
     m_Modifications:
-    - target: {fileID: 2949992455276422289, guid: 406c1dd0cdea28f4492a08197ca22a06, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3191200996548630997, guid: 406c1dd0cdea28f4492a08197ca22a06, type: 3}
       propertyPath: m_Name
       value: HookPoint (2)
@@ -2692,7 +2688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3720390952478107713, guid: 406c1dd0cdea28f4492a08197ca22a06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3720390952478107713, guid: 406c1dd0cdea28f4492a08197ca22a06, type: 3}
       propertyPath: m_LocalPosition.z

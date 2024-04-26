@@ -27,74 +27,73 @@ public class HookPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!swinging)
+        if (!swinging)
         {
             line.positionCount = 0;
         }
 
-        if (GameManager.instance != null)
-        {
-            float distance = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
 
-            if (distance < catchDistance && transform.position.y > GameManager.instance.player.transform.position.y && transform.position.x + 1.5f > GameManager.instance.player.transform.position.x)
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distance < catchDistance && transform.position.y > player.transform.position.y && transform.position.x + 1.5f > player.transform.position.x)
+        {
+            GetComponentInChildren<SpriteRenderer>().enabled = true;
+            playerInRange = true;
+        }
+        else if (!swinging && !swung && playerInRange)
+        {
+            swung = true;
+            // If not swinging and out of range, stop rendering the hook
+            line.positionCount = 0;
+            player.GetComponent<PlayerMovement>().swinging = false;
+            swinging = false;
+            playerInRange = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+
+            if (!noJumping)
             {
-                GetComponentInChildren<SpriteRenderer>().enabled = true;
-                playerInRange = true;
+                player.GetComponent<PlayerMovement>().DetachFromRope(7);
+                ApplySwingForce();
             }
-            else if (!swinging && !swung && playerInRange)
+
+        }
+
+        if (playerInRange && !swung)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
-                swung = true;
-                // If not swinging and out of range, stop rendering the hook
+                if (!player.GetComponent<PlayerMovement>().isGrounded)
+                {
+                    GetComponentInChildren<SpriteRenderer>().enabled = false;
+                    player.GetComponent<PlayerMovement>().swinging = true;
+                    swinging = true;
+                    noJumping = false;
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0))
+            {
                 line.positionCount = 0;
                 player.GetComponent<PlayerMovement>().swinging = false;
                 swinging = false;
-                playerInRange = false;
-                GetComponentInChildren<SpriteRenderer>().enabled = false;
-
-
-                if (!noJumping)
-                {
-                    player.GetComponent<PlayerMovement>().DetachFromRope(7);
-                    ApplySwingForce();
-                }
-                    
-            }
-
-            if (playerInRange && !swung)
-            {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                {
-                    if(!player.GetComponent<PlayerMovement>().isGrounded)
-                    {
-                        GetComponentInChildren<SpriteRenderer>().enabled = false;
-                        player.GetComponent<PlayerMovement>().swinging = true;
-                        swinging = true;
-                        noJumping = false;
-                    }
-                }
-
-                if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0))
-                {
-                    line.positionCount = 0;
-                    player.GetComponent<PlayerMovement>().swinging = false;
-                    swinging = false;
-                    noJumping = true;
-                    player.GetComponent<PlayerMovement>().DetachFromRope(4);
-                    ApplySwingForce();
-
-
-                }
-            }
-
-            if (swinging)
-            {
+                noJumping = true;
+                player.GetComponent<PlayerMovement>().DetachFromRope(4);
                 ApplySwingForce();
+
+
             }
         }
 
-        if (playerInRange && GameManager.instance != null && !swung)
+        if (swinging)
         {
-            if (GameManager.instance.dead == false)
+            ApplySwingForce();
+        }
+
+
+        if (playerInRange && !swung)
+        {
+            if (GameManager.instance != null && GameManager.instance.dead == false || player.GetComponent<PlayerMovement>().inMenu)
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
                 {
@@ -117,7 +116,7 @@ public class HookPoint : MonoBehaviour
         if (angle > maxAngle)
         {
             player.GetComponent<PlayerMovement>().swinging = false;
-            swinging = false;        
+            swinging = false;
         }
         else
         {
