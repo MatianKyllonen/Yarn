@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public TextMeshProUGUI killerText;
 
+    public TextMeshProUGUI totalScoreText;
     public TextMeshProUGUI gocoinsText;
     public TextMeshProUGUI victimsText;
     public TextMeshProUGUI gotimerText;
@@ -137,6 +138,7 @@ public class GameManager : MonoBehaviour
     public void GameOverFadeOut(string killer)
     {
         StartCoroutine(ILoveBlackMenShakingTheirCheeks());
+
         if (!dead)
             fading = true;
 
@@ -189,6 +191,8 @@ public class GameManager : MonoBehaviour
             killerImage.sprite = killerSprite;
         }
 
+        
+
         yield return new WaitForSeconds(1);
         gameOverScreen.SetActive(true);
         killerText.text = killer;
@@ -197,6 +201,8 @@ public class GameManager : MonoBehaviour
 
 
        score = Mathf.RoundToInt((distance + coins) - ((m * 60) + s));
+
+        StartCoroutine(CountScore(score));
 
         if (IsTopScore(score))
         {
@@ -218,6 +224,46 @@ public class GameManager : MonoBehaviour
         // If no match found, return a default sprite or handle it as needed
         return null;
     }
+
+    IEnumerator CountScore(int totalScore)
+    {
+        float startTime = Time.time;
+        int currentScore = 0;
+        TextMeshProUGUI text = totalScoreText.GetComponent<TextMeshProUGUI>();
+        text.color = Color.green;
+
+        // Separate values for distance, coins, and time
+        int distanceScore = Mathf.RoundToInt(distance);
+        int coinsScore = Mathf.RoundToInt(coins);
+        int timeScore = Mathf.RoundToInt((m * 60) + s);
+        int finalScore = distanceScore + coinsScore - timeScore;
+
+        // Incrementally update the displayed score
+        while (currentScore < finalScore)
+        {
+            float elapsedTime = Time.time - startTime;
+            if (elapsedTime >= 5f)
+            {
+                currentScore = finalScore;
+            }
+            else
+            {
+                // Increment the current score by a small amount each time
+                currentScore += Mathf.Max(1, Mathf.RoundToInt(finalScore * 0.05f)); // Increase by 5% of the total score or at least 1 point
+                currentScore = Mathf.Min(currentScore, finalScore); // Ensure current score doesn't exceed the final score
+            }
+
+            // Update the displayed score
+            totalScoreText.text = currentScore + "0";
+
+            yield return new WaitForSeconds(0.05f); // Wait for a short duration before updating the score again
+        }
+
+        text.color = Color.white;
+    }
+
+
+
 
     private bool IsTopScore(int distance)
     {

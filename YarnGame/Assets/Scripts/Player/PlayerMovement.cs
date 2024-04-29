@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public bool isGrounded;
     public SpriteRenderer rope;
-    [HideInInspector] public bool groundPounding;
+    public bool groundPounding;
     private bool isSliding = false;
 
     [HideInInspector]  public bool swinging;
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
             currentMoveSpeed = baseMoveSpeed + (gameObject.transform.position.x / 250);
 
-            if (groundPounding && !isSliding)
+            if (groundPounding)
             {
                 GetComponent<AudioSource>().PlayOneShot(poundSfx, 0.3f);
                 animator.SetBool("isGroundPounding", false);

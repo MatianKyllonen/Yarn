@@ -6,17 +6,22 @@ public class MenuButton : MonoBehaviour
 {
 
     private GameObject fade;
+    private GameObject leaderBoard;
+
+    private bool triggerd;
     // Enum defining different button types
 
     private void Start()
     {
 
+        leaderBoard = GameObject.Find("LeaderBoard");
         fade = GameObject.Find("Fade");
+
     }
     public enum ButtonType
     {
         Start,
-        Settings,
+        LeaderBoard,
         Quit
     };
 
@@ -28,6 +33,16 @@ public class MenuButton : MonoBehaviour
     }
 
     public ButtonAction[] buttonActions; // Array of button actions
+
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.JoystickButton0) && triggerd)
+        {
+            ShowBoard();
+            triggerd = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,6 +65,10 @@ public class MenuButton : MonoBehaviour
 
                         StartCoroutine(QuitGame());
                         fade.GetComponent<Rigidbody2D>().AddForce(Vector3.left * 3000);
+                    }
+                    else if (action.type == ButtonType.LeaderBoard)
+                    {
+                        ShowBoard();
                     }
                     // Add additional else if statements for other button types here
                 }
@@ -75,5 +94,10 @@ public class MenuButton : MonoBehaviour
         Debug.Log("Quitting the game...");
         yield return new WaitForSeconds(1);
         Application.Quit();
+    }
+
+    private void ShowBoard()
+    {     
+        leaderBoard.GetComponent<Animator>().SetTrigger("Trigger");
     }
 }
