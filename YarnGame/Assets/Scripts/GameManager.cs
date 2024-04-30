@@ -140,7 +140,19 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ILoveBlackMenShakingTheirCheeks());
 
         if (!dead)
+        {
             fading = true;
+
+            if(killer == "Water")
+            {
+                fadeOutImage.GetComponent<SpriteRenderer>().color = new Color(74 / 255, 130 / 255, 178 / 255);
+            }
+            else if (killer == "Lava")
+            {
+                fadeOutImage.GetComponent<SpriteRenderer>().color = new Color(242 / 255, 97 / 255, 63 / 255);
+            }
+        }
+            
 
         player.GetComponent<PlayerMovement>().enabled = false;
 

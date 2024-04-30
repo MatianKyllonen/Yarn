@@ -39,8 +39,8 @@ public class MenuButton : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.JoystickButton0) && triggerd)
         {
-            ShowBoard();
             triggerd = false;
+            leaderBoard.GetComponent<Animator>().SetBool("Showing", false);
         }
     }
 
@@ -68,7 +68,8 @@ public class MenuButton : MonoBehaviour
                     }
                     else if (action.type == ButtonType.LeaderBoard)
                     {
-                        ShowBoard();
+                        triggerd = true;
+                        leaderBoard.GetComponent<Animator>().SetBool("Showing", true);
                     }
                     // Add additional else if statements for other button types here
                 }
@@ -96,8 +97,4 @@ public class MenuButton : MonoBehaviour
         Application.Quit();
     }
 
-    private void ShowBoard()
-    {     
-        leaderBoard.GetComponent<Animator>().SetTrigger("Trigger");
-    }
 }
