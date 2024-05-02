@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 7319398372394101246, guid: 77ed7a4abf05bb34693ea23aef186da0, type: 3}
   - {fileID: 7319398372394101246, guid: 77ed7a4abf05bb34693ea23aef186da0, type: 3}
   - {fileID: 7319398372394101246, guid: 77ed7a4abf05bb34693ea23aef186da0, type: 3}
+  - {fileID: 7319398372394101246, guid: c8abdd14bcf940b44aa7294af5de1645, type: 3}
   objectsToSpawn2:
   - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}
   - {fileID: 1269230456374413825, guid: ab1509904a707aa4081c5cafb58228e7, type: 3}

@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -2 && !inMenu)
         {
-            if(transform.position.x > 400 && transform.position.x < 700)
+            if(transform.position.x > 0 && transform.position.x < 700)
                 GameManager.instance.GameOverFadeOut("Water");
 
             else if (transform.position.x > 700)

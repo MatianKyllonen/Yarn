@@ -8567,6 +8567,12 @@ MonoBehaviour:
   - {fileID: 8436353874801190703, guid: 0e7fdbe0d39b8f4459b2e0c3ad44ee90, type: 3}
   - {fileID: 8436353874801190703, guid: 28d88396a4f6989428ba314a3dd3bb6a, type: 3}
   - {fileID: 8436353874801190703, guid: fb4c92831503fbf489f3a636c1f78362, type: 3}
+  - {fileID: 8436353874801190703, guid: b041b34ccdebf5a43911a84fe9b98c37, type: 3}
+  - {fileID: 8436353874801190703, guid: fa95db474226c9f44aea35dd8516c907, type: 3}
+  - {fileID: 8436353874801190703, guid: f77f1fbf7936e6c4e981a22538ba0c3d, type: 3}
+  - {fileID: 8436353874801190703, guid: 5821653c9cb02d64caeb1f3d0fd8e3c5, type: 3}
+  - {fileID: 8436353874801190703, guid: c681ccf4c214d1c4d9cf9cbfb74dc687, type: 3}
+  - {fileID: 8436353874801190703, guid: 1970b199a98dfb041a6d96b9b212d7cb, type: 3}
   transitionArea: {fileID: 8436353874801190703, guid: 505c75719476a7d40bcb0991426c9da8, type: 3}
   areaWidth: 20
   distanceBetweenAreas: 20

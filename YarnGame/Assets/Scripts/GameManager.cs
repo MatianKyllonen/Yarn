@@ -145,11 +145,11 @@ public class GameManager : MonoBehaviour
 
             if(killer == "Water")
             {
-                fadeOutImage.GetComponent<SpriteRenderer>().color = new Color(74 / 255, 130 / 255, 178 / 255);
+                fadeOutImage.GetComponent<Image>().color = new Color(74 / 255, 130 / 255, 178 / 255);
             }
             else if (killer == "Lava")
             {
-                fadeOutImage.GetComponent<SpriteRenderer>().color = new Color(242 / 255, 97 / 255, 63 / 255);
+                fadeOutImage.GetComponent<Image>().color = new Color(242 / 255, 97 / 255, 63 / 255);
             }
         }
             
