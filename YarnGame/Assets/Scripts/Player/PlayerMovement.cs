@@ -52,11 +52,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();     
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-
-        Inputs();
-
         if (Input.GetKeyDown(KeyCode.K))
             baseMoveSpeed += 1;
 
@@ -64,13 +61,31 @@ public class PlayerMovement : MonoBehaviour
 
         // Check if the raycast hits something
         if (hit.collider != null)
-        {        
+        {
             // Player is grounded
             isGrounded = true;
         }
         else
             isGrounded = false;
 
+
+        if (transform.position.y < -2 && !inMenu)
+        {
+            if (transform.position.x > 400 && transform.position.x < 700)
+                GameManager.instance.GameOverFadeOut("Water");
+
+            else if (transform.position.x > 700)
+                GameManager.instance.GameOverFadeOut("Lava");
+            else
+                GameManager.instance.GameOverFadeOut("Void");
+
+        }
+    }
+
+    private void Update()
+    {
+
+        Inputs();
 
 
         //Reset values when on ground
@@ -89,23 +104,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             animator.SetBool("isJumping", true);
-
-
-
-
-
-        if (transform.position.y < -2 && !inMenu)
-        {
-            if(transform.position.x > 0 && transform.position.x < 700)
-                GameManager.instance.GameOverFadeOut("Water");
-
-            else if (transform.position.x > 700)
-                GameManager.instance.GameOverFadeOut("Lava");
-            else
-                GameManager.instance.GameOverFadeOut("Void");
-
-        }
-            
 
 
 
@@ -207,7 +205,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void DetachFromRope(float force)
     {
-        rb.velocity = new Vector2(rb.velocity.x + 1f, force);
+        print("BUST BOY BUST");
+        rb.velocity = Vector2.zero;
+
+        rb.velocity = new Vector2(rb.velocity.x * 100, force * 100) * Time.deltaTime;
     }
 
     public void JumpLaunch()

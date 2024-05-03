@@ -12,21 +12,20 @@ public class CrossBow : MonoBehaviour
 
     private GameObject player;
 
-    private void Update()
+    private void FixedUpdate()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, 15f, playerMask);
 
         if (hit.collider != null)
         {
-            if(hit.collider.gameObject.tag == "Player" && !fired)
+            if (hit.collider.gameObject.tag == "Player" && !fired)
             {
                 player = hit.collider.gameObject;
                 fired = true;
                 gameObject.GetComponentInChildren<Animator>().SetTrigger("Fire");
             }
-            
-        }
 
+        }
     }
 
     public void ShootArrow()

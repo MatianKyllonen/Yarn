@@ -72,7 +72,7 @@ public class MapGenerator : MonoBehaviour
         
     }
 
-    void Update()
+    private void FixedUpdate()
     {
 
         CheckAreaDistance();
@@ -82,7 +82,7 @@ public class MapGenerator : MonoBehaviour
             Vector3 spawnPosition = new Vector3(lastAreaX + distanceBetweenAreas, 0, 0f);
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
-            currentSpawnables = areaPrefabs2; 
+            currentSpawnables = areaPrefabs2;
             transition1Triggered = true;
 
             StartCoroutine(ChangeBg(null, 0.45f, 150));
@@ -106,10 +106,15 @@ public class MapGenerator : MonoBehaviour
             GameObject newArea = Instantiate(transitionArea, spawnPosition, Quaternion.identity);
             lastAreaX = newArea.transform.position.x;
             currentSpawnables = areaPrefabs4;
-            transition3Triggered = true;         
+            transition3Triggered = true;
             StartCoroutine(ChangeBg(zone4bg, 0.15f, 700, zone3bg, Lava, Water));
 
         }
+    }
+
+    void Update()
+    {
+
     }
 
     private IEnumerator ChangeBg(GameObject bg, float delay, float treshhold, GameObject removableBg = null, GameObject voidSkin = null, GameObject removableVoidSkin = null)

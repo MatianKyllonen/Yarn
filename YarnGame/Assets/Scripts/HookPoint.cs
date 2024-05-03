@@ -27,11 +27,63 @@ public class HookPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkIfInRange();
         if (!swinging)
         {
             line.positionCount = 0;
         }
 
+        if (playerInRange && !swung)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                if (!player.GetComponent<PlayerMovement>().isGrounded)
+                {
+                    GetComponentInChildren<SpriteRenderer>().enabled = false;
+                    player.GetComponent<PlayerMovement>().swinging = true;
+                    swinging = true;
+                    noJumping = false;
+                }
+            }
+
+            if(swinging)
+                if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0))
+                {
+                    line.positionCount = 0;
+                    player.GetComponent<PlayerMovement>().swinging = false;
+                    swinging = false;
+                    noJumping = true;
+
+                    player.GetComponent<PlayerMovement>().DetachFromRope(2);
+
+                    ApplySwingForce();
+
+
+                }
+        }
+
+        if (swinging)
+        {
+            ApplySwingForce();
+        }
+
+
+        if (playerInRange && !swung)
+        {
+            if (GameManager.instance != null && GameManager.instance.dead == false || player.GetComponent<PlayerMovement>().inMenu)
+            {
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+                {
+                    GetComponentInChildren<SpriteRenderer>().enabled = false;
+                    player.GetComponent<PlayerMovement>().swinging = true;
+                    swinging = true;
+                }
+            }
+        }
+    }
+
+    private void checkIfInRange()
+    {
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
@@ -53,55 +105,10 @@ public class HookPoint : MonoBehaviour
 
             if (!noJumping)
             {
-                player.GetComponent<PlayerMovement>().DetachFromRope(7);
+                player.GetComponent<PlayerMovement>().DetachFromRope(5);
                 ApplySwingForce();
             }
 
-        }
-
-        if (playerInRange && !swung)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-            {
-                if (!player.GetComponent<PlayerMovement>().isGrounded)
-                {
-                    GetComponentInChildren<SpriteRenderer>().enabled = false;
-                    player.GetComponent<PlayerMovement>().swinging = true;
-                    swinging = true;
-                    noJumping = false;
-                }
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Joystick1Button0))
-            {
-                line.positionCount = 0;
-                player.GetComponent<PlayerMovement>().swinging = false;
-                swinging = false;
-                noJumping = true;
-                player.GetComponent<PlayerMovement>().DetachFromRope(4);
-                ApplySwingForce();
-
-
-            }
-        }
-
-        if (swinging)
-        {
-            ApplySwingForce();
-        }
-
-
-        if (playerInRange && !swung)
-        {
-            if (GameManager.instance != null && GameManager.instance.dead == false || player.GetComponent<PlayerMovement>().inMenu)
-            {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                {
-                    GetComponentInChildren<SpriteRenderer>().enabled = false;
-                    player.GetComponent<PlayerMovement>().swinging = true;
-                    swinging = true;
-                }
-            }
         }
     }
 
@@ -130,7 +137,7 @@ public class HookPoint : MonoBehaviour
             line.SetPosition(1, transform.position);
 
             // Apply swing force
-            swingForceDirection = new Vector2(swingY - player.transform.position.y, player.transform.position.x - swingX);
+            swingForceDirection = new Vector2(swingY - player.transform.position.y, player.transform.position.x - swingX) * Time.deltaTime;
             playerRb.AddForce(swingForceDirection.normalized * ((swingForce + playerRb.velocity.magnitude) * 100 + playerRb.gameObject.GetComponent<PlayerMovement>().currentMoveSpeed) * Time.deltaTime);
         }
     }

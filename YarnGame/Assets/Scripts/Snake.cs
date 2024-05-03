@@ -17,6 +17,11 @@ public class Snake : MonoBehaviour
 
     void Update()
     {
+
+    }
+
+    private void FixedUpdate()
+    {
         // This calculates the new position it's gonna go to
         float newPositionX = startPosition + Mathf.PingPong(Time.time * moveSpeed, moveDistance) - (moveDistance / 2.0f);
 
