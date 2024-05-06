@@ -226,7 +226,7 @@ MonoBehaviour:
   moveSpeed: 8
   jumpForce: 12
   jumpThreshold: 0.5
-  throwForce: 20
+  throwForce: 25
   pickupLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -928,7 +928,7 @@ MonoBehaviour:
   moveSpeed: 8
   jumpForce: 12
   jumpThreshold: 0.5
-  throwForce: 20
+  throwForce: 25
   pickupLayer:
     serializedVersion: 2
     m_Bits: 128

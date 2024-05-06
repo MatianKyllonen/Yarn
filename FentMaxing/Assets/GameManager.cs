@@ -27,6 +27,14 @@ public class GameManager : MonoBehaviour
         player2ScoreText.text = player2Score.ToString();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+
     public void EndGame()
     {
         endScreen.SetActive(true);
